@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AROMA Coffee Roaster — 咖啡豆單</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Noto+Serif+TC:wght@300;400;500&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F3EC;
+      --warm-dark: #2C2416;
+      --gold: #B8965A;
+      --muted: #8A7A62;
+      --divider: #D9C9A8;
+      --card-bg: #FFFDF8;
+      --tag-bg: #EEE6D6;
+      --pill-bg: #EFF0EB;
+    }
+
+    body {
+      background: var(--cream);
+      font-family: 'Noto Serif TC', serif;
+      color: var(--warm-dark);
+      padding: 0 0 4rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .logo-container svg { height: 64px; width: auto; }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      margin-top: 1.8rem;
+      color: var(--warm-dark);
+    }
+
+    .hero-meta { font-size: 15px; color: var(--muted); letter-spacing: 0.1em; margin-top: 0.5rem; }
+
+    .roast-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      padding: 5px 18px;
+      margin-top: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ── MENU ── */
+    .section { max-width: 700px; margin: 0 auto; padding: 0 2rem; }
+
+    .region-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 2.5rem 0 1.2rem;
+    }
+
+    .region-label span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .region-line { flex: 1; height: 1px; background: var(--divider); }
+
+    .bean-card {
+      background: var(--card-bg);
+      border: 1px solid #E2D5BB;
+      border-radius: 2px;
+      padding: 1.4rem 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .bean-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      color: var(--gold);
+      font-weight: 300;
+      line-height: 1;
+      min-width: 26px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .bean-body { flex: 1; display: flex; gap: 1.2rem; align-items: flex-start; }
+    .bean-left { flex-shrink: 0; min-width: 165px; }
+
+    .bean-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--warm-dark);
+    }
+
+    .bean-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--muted);
+      font-size: 12px;
+      padding: 4px 11px;
+      border-radius: 1px;
+    }
+
+    .bean-right {
+      flex: 1;
+      border-left: 1px solid var(--divider);
+      padding-left: 1.2rem;
+    }
+
+    .flavors-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 9px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .flavor-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .flavor-pill {
+      font-size: 14px;
+      color: var(--muted);
+      background: var(--pill-bg);
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    .bean-price-wrap { text-align: right; white-space: nowrap; flex-shrink: 0; }
+
+    .bean-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--warm-dark);
+      font-weight: 400;
+    }
+
+    .bean-price-unit { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    .drip-banner {
+      max-width: 700px;
+      margin: 2.5rem auto 0;
+      padding: 1.1rem 1.5rem;
+      background: #F0EAD9;
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .drip-icon { width: 32px; height: 32px; flex-shrink: 0; }
+    .drip-price { color: var(--gold); font-weight: 500; }
+
+    /* ── ORDER FORM ── */
+    .order-section {
+      max-width: 700px;
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .order-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--warm-dark);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .order-subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .form-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .form-divider span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .form-divider-line { flex: 1; height: 1px; background: var(--divider); }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    label .req { color: var(--gold); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--card-bg);
+      border: 1px solid #E2D5BB;
+      border-radius: 2px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      color: var(--warm-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--gold);
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .form-row { display: flex; gap: 1rem; }
+    .form-row .form-group { flex: 1; }
+
+    /* 品項表格 */
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      background: var(--card-bg);
+      border: 1px solid #E2D5BB;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .order-table th {
+      background: #F0EAD9;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 400;
+      border-bottom: 1px solid #E2D5BB;
+    }
+
+    .order-table th:last-child { text-align: center; width: 120px; }
+
+    .order-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #F0EAD9;
+      font-size: 13px;
+      color: var(--warm-dark);
+    }
+
+    .order-table tr:last-child td { border-bottom: none; }
+
+    .order-table td:last-child { text-align: center; }
+
+    .item-price {
+      font-size: 12px;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .qty-select {
+      width: 80px;
+      padding: 6px 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* 金額小計 */
+    .total-box {
+      background: #F0EAD9;
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .total-label {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .total-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--warm-dark);
+      font-weight: 400;
+    }
+
+    .total-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    /* 送出按鈕 */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--warm-dark);
+      color: var(--cream);
+      border: none;
+      border-radius: 2px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover { background: var(--gold); }
+
+    /* ── 付款資訊彈出 ── */
+    .payment-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(44,36,22,0.6);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .payment-modal.show { display: flex; }
+
+    .payment-box {
+      background: var(--card-bg);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .payment-check {
+      width: 56px;
+      height: 56px;
+      background: #EEE6D6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 24px;
+    }
+
+    .payment-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--warm-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .payment-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .payment-method {
+      background: #F7F3EC;
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .payment-method-title {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 10px;
+    }
+
+    .payment-info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--warm-dark);
+      margin-bottom: 6px;
+    }
+
+    .payment-info-label { color: var(--muted); }
+
+    .payment-amount-row {
+      border-top: 1px solid var(--divider);
+      margin-top: 10px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .payment-amount-label { font-size: 13px; color: var(--muted); }
+
+    .payment-amount-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--warm-dark);
+    }
+
+    .payment-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    .close-btn {
+      margin-top: 1.5rem;
+      padding: 12px 32px;
+      background: var(--warm-dark);
+      color: var(--cream);
+      border: none;
+      border-radius: 2px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+    }
+
+    .close-btn:hover { background: var(--gold); }
+
+    @media (max-width: 580px) {
+      .bean-body { flex-direction: column; gap: 1rem; }
+      .bean-right { border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 1rem; }
+      .bean-left { min-width: unset; }
+      .form-row { flex-direction: column; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── 豆單 ── -->
+  <div class="hero">
+    <div class="logo-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158.14 46.96">
+        <defs><style>.cls-1{isolation:isolate;font-size:9.26px;fill:#c9a96e;font-family:TimesNewRomanPSMT,Times New Roman;letter-spacing:0.5em;}.cls-2{fill:#d4b896;stroke:#d4b896;stroke-width:1.62px;}.cls-2,.cls-3,.cls-4{stroke-miterlimit:10;}.cls-3{fill:none;stroke:#cb3d27;stroke-width:4.43px;}.cls-4{fill:#89c4d4;stroke:#89c4d4;stroke-width:3.25px;}</style></defs>
+        <g><g>
+          <text class="cls-1" transform="translate(7.15 44.12)">COFFEE ROASTER</text>
+          <path class="cls-2" d="M7.8,21.72,4.93,29.78H1.18L12.21,1H15.7L26.77,29.78H23l-3-8.06-1.11-3L14.38,6.43a10.73,10.73,0,0,1-.44-1.92h-.08a11.57,11.57,0,0,1-.46,1.92L8.92,18.69Z"/>
+          <path class="cls-2" d="M138,21.72l-2.86,8.06h-3.76L142.4,1h3.49L157,29.78h-3.73l-3-8.06-1.1-3L144.56,6.43a12.86,12.86,0,0,1-.44-1.92H144a10.64,10.64,0,0,1-.46,1.92l-4.47,12.26Z"/>
+          <path class="cls-2" d="M44,17.46H39.73V29.78h-3.4V.81H45a12.19,12.19,0,0,1,3.5.48,7.71,7.71,0,0,1,2.79,1.44,6.64,6.64,0,0,1,1.85,2.42,8.06,8.06,0,0,1,.67,3.38,8,8,0,0,1-.46,2.78A7.17,7.17,0,0,1,52,13.56a7.94,7.94,0,0,1-2,1.69,10.58,10.58,0,0,1-2.66,1.08v.08L57.1,29.78h-4ZM39.73,3.88V14.39h4.6A6.91,6.91,0,0,0,46.69,14a5.25,5.25,0,0,0,1.86-1.1,5,5,0,0,0,1.24-1.75,6.06,6.06,0,0,0,.44-2.34,4.52,4.52,0,0,0-1.5-3.62,6.49,6.49,0,0,0-4.36-1.31Z"/>
+          <path class="cls-2" d="M107,21.85,95.35,4.71c.11,1.16.16,3.05.16,5.68V29.78H92.24V.81h4.49L107,16.21,117.53.81h4.25v29H118.4V10.35c0-1.54.1-3.42.29-5.64Z"/>
+          <circle class="cls-3" cx="74.89" cy="13.27" r="7.81"/>
+          <line class="cls-4" x1="66.31" y1="28.96" x2="83.83" y2="28.96"/>
+        </g></g>
+      </svg>
+    </div>
+    <div class="hero-title">咖 啡 豆 單</div>
+    <div class="hero-meta">精品咖啡烘焙</div>
+    <div class="roast-badge">烘焙日 2026.04.11</div>
+  </div>
+
+  <div class="section">
+    <div class="region-label">
+      <div class="region-line"></div>
+      <span>非　洲</span>
+      <div class="region-line"></div>
+    </div>
+
+    <div class="bean-card">
+      <div class="bean-num">1</div>
+      <div class="bean-body">
+        <div class="bean-left">
+          <div class="bean-name">衣索比亞 西達摩<br>花貝果娜村 G1</div>
+          <div class="bean-tags"><span class="tag">黃蜜處理</span><span class="tag">#74158</span></div>
+        </div>
+        <div class="bean-right">
+          <div class="flavors-label">TASTING NOTES</div>
+          <div class="flavor-pills">
+            <span class="flavor-pill">杏桃</span><span class="flavor-pill">白花</span><span class="flavor-pill">蘋果</span><span class="flavor-pill">紅莓</span><span class="flavor-pill">甜橙</span>
+          </div>
+        </div>
+      </div>
+      <div class="bean-price-wrap">
+        <div class="bean-price">$520</div>
+        <div class="bean-price-unit">/ 220g</div>
+      </div>
+    </div>
+
+    <div class="bean-card">
+      <div class="bean-num">2</div>
+      <div class="bean-body">
+        <div class="bean-left">
+          <div class="bean-name">衣索比亞 西達摩<br>波娜山徑 芭蕾 G1</div>
+          <div class="bean-tags"><span class="tag">日曬</span><span class="tag">原生種</span></div>
+        </div>
+        <div class="bean-right">
+          <div class="flavors-label">TASTING NOTES</div>
+          <div class="flavor-pills">
+            <span class="flavor-pill">藍莓醬</span><span class="flavor-pill">葡萄</span><span class="flavor-pill">水蜜桃</span><span class="flavor-pill">佛手柑</span><span class="flavor-pill">紫羅蘭花香</span>
+          </div>
+        </div>
+      </div>
+      <div class="bean-price-wrap">
+        <div class="bean-price">$520</div>
+        <div class="bean-price-unit">/ 220g</div>
+      </div>
+    </div>
+
+    <div class="bean-card">
+      <div class="bean-num">3</div>
+      <div class="bean-body">
+        <div class="bean-left">
+          <div class="bean-name">衣索比亞 西達摩<br>花貝果娜村 頂級 G1</div>
+          <div class="bean-tags"><span class="tag">水洗</span><span class="tag">#74158</span></div>
+        </div>
+        <div class="bean-right">
+          <div class="flavors-label">TASTING NOTES</div>
+          <div class="flavor-pills">
+            <span class="flavor-pill">野薑花</span><span class="flavor-pill">杏桃</span><span class="flavor-pill">百合花</span><span class="flavor-pill">熱帶果汁</span><span class="flavor-pill">百香果</span><span class="flavor-pill">荔枝</span><span class="flavor-pill">覆盆子</span><span class="flavor-pill">玫瑰</span>
+          </div>
+        </div>
+      </div>
+      <div class="bean-price-wrap">
+        <div class="bean-price">$480</div>
+        <div class="bean-price-unit">/ 220g</div>
+      </div>
+    </div>
+
+    <div class="region-label">
+      <div class="region-line"></div>
+      <span>中南美洲</span>
+      <div class="region-line"></div>
+    </div>
+
+    <div class="bean-card">
+      <div class="bean-num">4</div>
+      <div class="bean-body">
+        <div class="bean-left">
+          <div class="bean-name">哥斯大黎加 塔拉佐<br>雲頂 火山寶藏莊園</div>
+          <div class="bean-tags"><span class="tag">日曬</span><span class="tag">卡杜拉</span></div>
+        </div>
+        <div class="bean-right">
+          <div class="flavors-label">TASTING NOTES</div>
+          <div class="flavor-pills">
+            <span class="flavor-pill">黑莓</span><span class="flavor-pill">葡萄乾香氣</span><span class="flavor-pill">草莓</span><span class="flavor-pill">芒果</span><span class="flavor-pill">甜桃</span>
+          </div>
+        </div>
+      </div>
+      <div class="bean-price-wrap">
+        <div class="bean-price">$520</div>
+        <div class="bean-price-unit">/ 220g</div>
+      </div>
+    </div>
+
+    <div class="bean-card">
+      <div class="bean-num">5</div>
+      <div class="bean-body">
+        <div class="bean-left">
+          <div class="bean-name">哥倫比亞 娜麗諾<br>花境</div>
+          <div class="bean-tags"><span class="tag">水洗</span><span class="tag">藝伎</span></div>
+        </div>
+        <div class="bean-right">
+          <div class="flavors-label">TASTING NOTES</div>
+          <div class="flavor-pills">
+            <span class="flavor-pill">茉莉花</span><span class="flavor-pill">薰衣草</span><span class="flavor-pill">百香果</span><span class="flavor-pill">水蜜桃</span><span class="flavor-pill">檸檬草</span><span class="flavor-pill">綠茶</span><span class="flavor-pill">棉花糖</span>
+          </div>
+        </div>
+      </div>
+      <div class="bean-price-wrap">
+        <div class="bean-price">$750</div>
+        <div class="bean-price-unit">/ 220g</div>
+      </div>
+    </div>
+
+    <div class="drip-banner">
+      <svg class="drip-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M16 4C16 4 8 13 8 19a8 8 0 0016 0c0-6-8-15-8-15z" stroke="#B8965A" stroke-width="1.5" fill="#DFD0B0"/>
+        <path d="M12 20c0 2.2 1.8 4 4 4" stroke="#B8965A" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div>以上均提供新鮮<strong style="color:#2C2416">濾掛式 / 濾泡式</strong>咖啡包&emsp;每包 <span class="drip-price">$45</span> 元</div>
+    </div>
+  </div>
+
+  <!-- ── 訂購表單 ── -->
+  <div class="order-section">
+    <div style="border-top: 1px solid var(--divider); margin: 3rem 0 2.5rem;"></div>
+    <div class="order-title">立 即 訂 購</div>
+    <div class="order-subtitle">填寫完成後將顯示付款資訊，我們收到訂單後會儘快與您確認</div>
+
+    <form id="orderForm" action="https://formspree.io/f/mzdyplda" method="POST">
+
+      <!-- 基本資料 -->
+      <div class="form-divider">
+        <div class="form-divider-line"></div>
+        <span>基本資料</span>
+        <div class="form-divider-line"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>姓名 <span class="req">*</span></label>
+          <input type="text" name="姓名" required placeholder="請輸入姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話 <span class="req">*</span></label>
+          <input type="tel" name="電話" required placeholder="請輸入電話">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>電子信箱</label>
+        <input type="email" name="email" placeholder="請輸入 Email（選填）">
+      </div>
+
+      <!-- 寄送資訊 -->
+      <div class="form-divider">
+        <div class="form-divider-line"></div>
+        <span>寄送方式</span>
+        <div class="form-divider-line"></div>
+      </div>
+
+      <div class="form-group">
+        <label>寄送方式 <span class="req">*</span></label>
+        <select name="寄送方式" id="shipMethod" required onchange="toggleShipFields()">
+          <option value="">請選擇寄送方式</option>
+          <option value="郵局寄送">郵局寄送</option>
+          <option value="7-11 店到店">7-11 店到店</option>
+          <option value="全家 店到店">全家 店到店</option>
+          <option value="自取">自取（需先與老闆確認）</option>
+        </select>
+      </div>
+
+      <div id="postalGroup" class="form-group" style="display:none;">
+        <label>郵遞區號 <span class="req">*</span></label>
+        <input type="text" name="郵遞區號" id="postalInput" placeholder="請輸入郵遞區號">
+      </div>
+
+      <div id="addressGroup" class="form-group" style="display:none;">
+        <label id="addressLabel">寄送地址 <span class="req">*</span></label>
+        <input type="text" name="地址／門市" id="addressInput" placeholder="">
+      </div>
+
+      <!-- 選購品項 -->
+      <div class="form-divider">
+        <div class="form-divider-line"></div>
+        <span>選購品項</span>
+        <div class="form-divider-line"></div>
+      </div>
+
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem;">請選擇各品項數量，不需要請選 0</p>
+
+      <!-- 咖啡豆 -->
+      <p style="font-size:12px;letter-spacing:0.15em;color:var(--gold);font-family:'Cormorant Garamond',serif;margin-bottom:8px;">咖啡豆 220g／袋</p>
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>品項</th>
+            <th>數量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              衣索比亞 西達摩 花貝果娜村 G1 黃蜜處理
+              <div class="item-price">$520 / 220g</div>
+            </td>
+            <td>
+              <select class="qty-select" name="咖啡豆①花貝果娜村G1黃蜜數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              衣索比亞 西達摩 波娜山徑 芭蕾 G1 日曬原生種
+              <div class="item-price">$520 / 220g</div>
+            </td>
+            <td>
+              <select class="qty-select" name="咖啡豆②波娜山徑芭蕾G1數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              衣索比亞 西達摩 花貝果娜村 頂級 G1 水洗
+              <div class="item-price">$480 / 220g</div>
+            </td>
+            <td>
+              <select class="qty-select" name="咖啡豆③花貝果娜村頂級G1數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              哥斯大黎加 塔拉佐 雲頂 火山寶藏莊園 日曬
+              <div class="item-price">$520 / 220g</div>
+            </td>
+            <td>
+              <select class="qty-select" name="咖啡豆④火山寶藏莊園數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              哥倫比亞 娜麗諾 花境 水洗藝伎
+              <div class="item-price">$750 / 220g</div>
+            </td>
+            <td>
+              <select class="qty-select" name="咖啡豆⑤娜麗諾花境數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 濾掛/濾泡包 -->
+      <p style="font-size:12px;letter-spacing:0.15em;color:var(--gold);font-family:'Cormorant Garamond',serif;margin-bottom:8px;margin-top:1.2rem;">濾掛／濾泡式咖啡包 $45／包</p>
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>品項</th>
+            <th>數量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>① 花貝果娜村 G1 黃蜜處理</td>
+            <td>
+              <select class="qty-select" name="濾掛包①花貝果娜村G1黃蜜數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>② 波娜山徑 芭蕾 G1 日曬原生種</td>
+            <td>
+              <select class="qty-select" name="濾掛包②波娜山徑芭蕾G1數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>③ 花貝果娜村 頂級 G1 水洗</td>
+            <td>
+              <select class="qty-select" name="濾掛包③花貝果娜村頂級G1數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>④ 火山寶藏莊園 日曬</td>
+            <td>
+              <select class="qty-select" name="濾掛包④火山寶藏莊園數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>⑤ 娜麗諾 花境 水洗藝伎</td>
+            <td>
+              <select class="qty-select" name="濾掛包⑤娜麗諾花境數量" onchange="calcTotal()">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 金額小計 -->
+      <div class="total-box">
+        <div style="width:100%;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span class="total-label">商品小計</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--warm-dark);">$<span id="subtotalAmount">0</span></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span class="total-label">運費</span>
+            <span id="shippingText" style="font-size:14px;color:var(--muted);">—</span>
+          </div>
+          <div style="border-top:1px solid var(--divider);padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+            <span class="total-label" style="font-size:15px;">合計</span>
+            <div class="total-amount">$<span id="totalAmount">0</span></div>
+          </div>
+          <div id="freeShippingNote" style="display:none;text-align:right;font-size:12px;color:var(--gold);margin-top:4px;">✓ 已達免運門檻</div>
+          <div id="shippingNote" style="text-align:right;font-size:12px;color:var(--muted);margin-top:4px;">滿 $800 免運費</div>
+        </div>
+      </div>
+
+      <!-- 隱藏欄位傳總金額 -->
+      <input type="hidden" name="商品小計" id="subtotalHidden" value="0">
+      <input type="hidden" name="運費" id="shippingHidden" value="0">
+      <input type="hidden" name="訂單金額合計" id="totalHidden" value="0">
+
+      <!-- 備註 -->
+      <div class="form-divider">
+        <div class="form-divider-line"></div>
+        <span>備註</span>
+        <div class="form-divider-line"></div>
+      </div>
+
+      <div class="form-group">
+        <label>備註（特殊需求、包裝需求等）</label>
+        <textarea name="備註" placeholder="選填"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">確認送出訂單</button>
+    </form>
+  </div>
+
+  <!-- ── 付款資訊 Modal ── -->
+  <div class="payment-modal" id="paymentModal">
+    <div class="payment-box">
+      <div class="payment-check">✓</div>
+      <div class="payment-title">訂單已送出！</div>
+      <div class="payment-sub">請依以下資訊完成付款，我們收到後將儘快與您確認</div>
+
+      <div class="payment-method">
+        <div class="payment-method-title">銀行轉帳</div>
+        <div class="payment-info-row">
+          <span class="payment-info-label">銀行</span>
+          <span>台新銀行（812）敦南分行 0023</span>
+        </div>
+        <div class="payment-info-row">
+          <span class="payment-info-label">帳號</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:0.05em;">28881007489717</span>
+        </div>
+        <div class="payment-info-row">
+          <span class="payment-info-label">戶名</span>
+          <span>馬苡萱</span>
+        </div>
+        <div class="payment-amount-row">
+          <span class="payment-amount-label">應付金額</span>
+          <span class="payment-amount-value">$<span id="modalAmount">0</span></span>
+        </div>
+      </div>
+
+      <div class="payment-note">
+        ・轉帳完成後請保留收據<br>
+        ・如有任何問題歡迎透過 Line 與我們聯繫<br>
+        ・Line ID：beau8477
+      </div>
+
+      <button class="close-btn" onclick="closeModal()">了解，關閉</button>
+    </div>
+  </div>
+
+  <script>
+    const prices = [520, 520, 480, 520, 750];
+    const dripPrice = 45;
+
+    function calcTotal() {
+      const beanSelects = document.querySelectorAll('[name^="咖啡豆"]');
+      const dripSelects = document.querySelectorAll('[name^="濾掛包"]');
+      let subtotal = 0;
+      beanSelects.forEach((sel, i) => { subtotal += parseInt(sel.value) * prices[i]; });
+      dripSelects.forEach(sel => { subtotal += parseInt(sel.value) * dripPrice; });
+
+      const shipMethod = document.getElementById('shipMethod').value;
+      const shipping = (subtotal > 0 && subtotal < 800 && shipMethod !== '自取') ? 65 : 0;
+      const total = subtotal + shipping;
+
+      document.getElementById('subtotalAmount').textContent = subtotal.toLocaleString();
+      document.getElementById('subtotalHidden').value = subtotal;
+
+      if (subtotal === 0) {
+        document.getElementById('shippingText').textContent = '—';
+        document.getElementById('freeShippingNote').style.display = 'none';
+        document.getElementById('shippingNote').style.display = 'block';
+      } else if (shipping === 0) {
+        document.getElementById('shippingText').textContent = '免運費';
+        document.getElementById('freeShippingNote').style.display = 'block';
+        document.getElementById('shippingNote').style.display = 'none';
+      } else {
+        document.getElementById('shippingText').textContent = '+$65';
+        document.getElementById('freeShippingNote').style.display = 'none';
+        document.getElementById('shippingNote').style.display = 'block';
+      }
+
+      document.getElementById('shippingHidden').value = shipping;
+      document.getElementById('totalHidden').value = total;
+      document.getElementById('totalAmount').textContent = total.toLocaleString();
+      document.getElementById('modalAmount').textContent = total.toLocaleString();
+    }
+
+    function toggleShipFields() {
+      const method = document.getElementById('shipMethod').value;
+      const postalGroup = document.getElementById('postalGroup');
+      const addressGroup = document.getElementById('addressGroup');
+      const addressLabel = document.getElementById('addressLabel');
+      const addressInput = document.getElementById('addressInput');
+      const postalInput = document.getElementById('postalInput');
+
+      if (method === '郵局寄送') {
+        postalGroup.style.display = 'block';
+        addressGroup.style.display = 'block';
+        addressLabel.innerHTML = '寄送地址 <span class="req">*</span>';
+        addressInput.placeholder = '請輸入完整地址（縣市、區、路名、門號）';
+        postalInput.required = true;
+        addressInput.required = true;
+      } else if (method === '7-11 店到店' || method === '全家 店到店') {
+        postalGroup.style.display = 'none';
+        addressGroup.style.display = 'block';
+        addressLabel.innerHTML = '取件門市名稱 <span class="req">*</span>';
+        addressInput.placeholder = '請輸入門市名稱（例如：台北忠孝門市）';
+        postalInput.required = false;
+        addressInput.required = true;
+      } else if (method === '自取') {
+        postalGroup.style.display = 'none';
+        addressGroup.style.display = 'none';
+        postalInput.required = false;
+        addressInput.required = false;
+      } else {
+        postalGroup.style.display = 'none';
+        addressGroup.style.display = 'none';
+        postalInput.required = false;
+        addressInput.required = false;
+      }
+      calcTotal();
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const total = parseInt(document.getElementById('totalHidden').value);
+      if (total === 0) {
+        alert('請至少選擇一項商品！');
+        return;
+      }
+      const formData = new FormData(this);
+      try {
+        const res = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          document.getElementById('paymentModal').classList.add('show');
+        } else {
+          alert('送出失敗，請稍後再試');
+        }
+      } catch {
+        alert('網路錯誤，請稍後再試');
+      }
+    });
+
+    function closeModal() {
+      document.getElementById('paymentModal').classList.remove('show');
+      document.getElementById('orderForm').reset();
+      calcTotal();
+      toggleShipFields();
+    }
+  </script>
+
+</body>
+</html>
