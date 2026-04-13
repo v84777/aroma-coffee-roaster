@@ -47,14 +47,14 @@
 
     .order-ctrl { border-top: 1px solid var(--divider); padding-top: 1rem; }
     .ctrl-row { display: flex; flex-direction: column; gap: 8px; }
-    .ctrl-inner-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+    .ctrl-inner-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
     .ctrl-group { display: flex; align-items: center; gap: 7px; }
     .ctrl-label { font-size: 15px; color: #5A4A35; white-space: nowrap; font-weight: 500; }
     .qty-btn { width: 34px; height: 34px; border: 1px solid #C4B08A; border-radius: 2px; background: var(--cream); color: #1E1608; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; flex-shrink: 0; }
     .qty-btn:hover { background: #E8DFD0; }
     .qty-num { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #1E1608; min-width: 22px; text-align: center; color: var(--warm-dark); }
     .ctrl-price { font-size: 13px; color: #96753A; }
-    .ctrl-divider { width: 1px; height: 22px; background: var(--divider); }
+    .ctrl-divider { width: 1px; height: 22px; background: var(--divider); margin: 0 4px; }
 
     .cart-wrap { width: 230px; flex-shrink: 0; }
     .sticky-cart { position: sticky; top: 1.5rem; background: #F0EAD9; border: 1px solid var(--divider); border-radius: 2px; padding: 1.4rem; }
@@ -164,8 +164,8 @@
               <div class="flavors-label">TASTING NOTES</div>
               <div class="flavor-pills"><span class="flavor-pill">杏桃</span><span class="flavor-pill">白花</span><span class="flavor-pill">蘋果</span><span class="flavor-pill">紅莓</span><span class="flavor-pill">甜橙</span></div>
             </div>
-            <div class="bean-price-wrap"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
           </div>
+          <div class="bean-price-wrap"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
@@ -175,7 +175,7 @@
             <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',0,-1)">−</button><span class="qty-num" id="drip-0">0</span><button class="qty-btn" onclick="updateQty('drip',0,1)">+</button></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',0,-1)">−</button><span class="qty-num" id="filter-0">0</span><button class="qty-btn" onclick="updateQty('filter',0,1)">+</button></div>
-            <span class="ctrl-price" style="margin-left:4px;">$45/包</span>
+            <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
       </div>
@@ -192,8 +192,8 @@
               <div class="flavors-label">TASTING NOTES</div>
               <div class="flavor-pills"><span class="flavor-pill">藍莓醬</span><span class="flavor-pill">葡萄</span><span class="flavor-pill">水蜜桃</span><span class="flavor-pill">佛手柑</span><span class="flavor-pill">紫羅蘭花香</span></div>
             </div>
-            <div class="bean-price-wrap"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
           </div>
+          <div class="bean-price-wrap"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
@@ -203,7 +203,7 @@
             <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',1,-1)">−</button><span class="qty-num" id="drip-1">0</span><button class="qty-btn" onclick="updateQty('drip',1,1)">+</button></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',1,-1)">−</button><span class="qty-num" id="filter-1">0</span><button class="qty-btn" onclick="updateQty('filter',1,1)">+</button></div>
-            <span class="ctrl-price" style="margin-left:4px;">$45/包</span>
+            <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
       </div>
@@ -220,8 +220,8 @@
               <div class="flavors-label">TASTING NOTES</div>
               <div class="flavor-pills"><span class="flavor-pill">野薑花</span><span class="flavor-pill">杏桃</span><span class="flavor-pill">百合花</span><span class="flavor-pill">熱帶果汁</span><span class="flavor-pill">百香果</span><span class="flavor-pill">荔枝</span><span class="flavor-pill">覆盆子</span><span class="flavor-pill">玫瑰</span></div>
             </div>
-            <div class="bean-price-wrap"><div class="bean-price">$480</div><div class="bean-price-unit">/ 220g</div></div>
           </div>
+          <div class="bean-price-wrap"><div class="bean-price">$480</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
@@ -231,7 +231,7 @@
             <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',2,-1)">−</button><span class="qty-num" id="drip-2">0</span><button class="qty-btn" onclick="updateQty('drip',2,1)">+</button></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',2,-1)">−</button><span class="qty-num" id="filter-2">0</span><button class="qty-btn" onclick="updateQty('filter',2,1)">+</button></div>
-            <span class="ctrl-price" style="margin-left:4px;">$45/包</span>
+            <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
       </div>
@@ -250,8 +250,8 @@
               <div class="flavors-label">TASTING NOTES</div>
               <div class="flavor-pills"><span class="flavor-pill">黑莓</span><span class="flavor-pill">葡萄乾香氣</span><span class="flavor-pill">草莓</span><span class="flavor-pill">芒果</span><span class="flavor-pill">甜桃</span></div>
             </div>
-            <div class="bean-price-wrap"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
           </div>
+          <div class="bean-price-wrap"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
@@ -261,7 +261,7 @@
             <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',3,-1)">−</button><span class="qty-num" id="drip-3">0</span><button class="qty-btn" onclick="updateQty('drip',3,1)">+</button></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',3,-1)">−</button><span class="qty-num" id="filter-3">0</span><button class="qty-btn" onclick="updateQty('filter',3,1)">+</button></div>
-            <span class="ctrl-price" style="margin-left:4px;">$45/包</span>
+            <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
       </div>
@@ -278,8 +278,8 @@
               <div class="flavors-label">TASTING NOTES</div>
               <div class="flavor-pills"><span class="flavor-pill">茉莉花</span><span class="flavor-pill">薰衣草</span><span class="flavor-pill">百香果</span><span class="flavor-pill">水蜜桃</span><span class="flavor-pill">檸檬草</span><span class="flavor-pill">綠茶</span><span class="flavor-pill">棉花糖</span></div>
             </div>
-            <div class="bean-price-wrap"><div class="bean-price">$750</div><div class="bean-price-unit">/ 220g</div></div>
           </div>
+          <div class="bean-price-wrap"><div class="bean-price">$750</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
@@ -289,7 +289,7 @@
             <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',4,-1)">−</button><span class="qty-num" id="drip-4">0</span><button class="qty-btn" onclick="updateQty('drip',4,1)">+</button></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',4,-1)">−</button><span class="qty-num" id="filter-4">0</span><button class="qty-btn" onclick="updateQty('filter',4,1)">+</button></div>
-            <span class="ctrl-price" style="margin-left:4px;">$45/包</span>
+            <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
       </div>
