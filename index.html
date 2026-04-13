@@ -118,25 +118,27 @@
       .sticky-cart { position: static; }
       .bean-card { padding: 1rem; }
 
-      /* 手機版：bean-header 改直排 */
-      .bean-header { flex-direction: column; gap: 0; }
-      .bean-num { font-size: 18px; margin-bottom: 4px; }
+      /* bean-header：編號＋body＋price 橫排 */
+      .bean-header { flex-direction: row; align-items: flex-start; gap: 8px; }
+      .bean-num { font-size: 18px; flex-shrink: 0; }
 
-      /* bean-body 直排：品名在上，tasting notes 在下 */
-      .bean-body { flex-direction: column; gap: 0.6rem; width: 100%; }
-      .bean-left { width: 100%; min-width: 0; }
-      .bean-name { font-size: 17px; }
-      .bean-tags { margin-top: 6px; }
+      /* bean-body：左欄品名＋右欄風味 橫排 */
+      .bean-body { flex-direction: row; gap: 0.8rem; flex: 1; min-width: 0; }
+      .bean-left { flex-shrink: 0; min-width: 0; max-width: 45%; }
+      .bean-name { font-size: 16px; }
+      .bean-tags { margin-top: 6px; flex-wrap: wrap; }
+      .tag { font-size: 11px; padding: 3px 8px; }
 
-      /* 金額在品名下方 */
-      .bean-price-wrap { order: 1; margin-top: 4px; justify-content: flex-start; }
-      .bean-price { font-size: 20px; }
-      .bean-price-unit { font-size: 13px; }
+      /* 金額在品名下方（bean-left 裡） */
+      .bean-price-wrap { display: flex; justify-content: flex-start; margin-top: 6px; }
+      .bean-price { font-size: 18px; }
+      .bean-price-unit { font-size: 12px; }
 
-      /* tasting notes：風味順著排，不換行 */
-      .bean-right { border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.7rem; width: 100%; }
+      /* tasting notes 右欄：風味順著排不強制換行 */
+      .bean-right { border-left: 1px solid var(--divider); border-top: none; padding-left: 0.8rem; padding-top: 0; flex: 1; min-width: 0; }
+      .flavors-label { font-size: 12px; }
       .flavor-pills { flex-wrap: wrap; gap: 5px; }
-      .flavor-pill { font-size: 13px; padding: 4px 10px; }
+      .flavor-pill { font-size: 12px; padding: 3px 9px; }
 
       /* 選購控制 */
       .ctrl-row { gap: 6px; }
