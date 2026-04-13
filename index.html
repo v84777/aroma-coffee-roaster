@@ -118,31 +118,25 @@
       .sticky-cart { position: static; }
       .bean-card { padding: 1rem; }
 
-      /* bean-header 直排：品名區 + 風味區 上下排 */
       .bean-header { flex-direction: column; gap: 0.6rem; }
-      .bean-num { font-size: 18px; }
+      .bean-num { font-size: 22px; }
 
-      /* bean-body 橫排：左欄品名、右欄風味 */
       .bean-body { flex-direction: row; gap: 0.8rem; width: 100%; }
       .bean-left { flex-shrink: 0; min-width: 0; max-width: 45%; display: flex; flex-direction: column; }
-      .bean-name { font-size: 16px; }
+      .bean-name { font-size: 18px; }
       .bean-tags { margin-top: 6px; flex-wrap: wrap; }
-      .tag { font-size: 11px; padding: 3px 8px; }
+      .tag { font-size: 13px; padding: 5px 10px; }
 
-      /* 金額在 bean-left 最下方，品名和標籤下面 */
       .bean-price-wrap { margin-top: 8px; justify-content: flex-start; }
-      .bean-price { font-size: 18px; }
-      .bean-price-unit { font-size: 12px; }
+      .bean-price { font-size: 22px; }
+      .bean-price-unit { font-size: 14px; }
 
-      /* 右欄風味，金額不在這裡 */
       .bean-right { border-left: 1px solid var(--divider); border-top: none; padding-left: 0.8rem; padding-top: 0; flex: 1; min-width: 0; }
-      .flavors-label { font-size: 12px; }
-      .flavor-pills { flex-wrap: wrap; gap: 5px; }
-      .flavor-pill { font-size: 12px; padding: 3px 9px; }
+      .flavors-label { font-size: 14px; }
+      .flavor-pills { flex-wrap: wrap; gap: 6px; }
+      .flavor-pill { font-size: 14px; padding: 5px 12px; }
 
-      /* 桌面版的 bean-price-wrap 在 bean-header 最右，手機版隱藏它 */
       .bean-header > .bean-price-wrap { display: none; }
-      /* 只顯示 bean-left 裡的金額 */
       .bean-left > .bean-price-wrap { display: flex !important; }
 
       .ctrl-row { gap: 6px; }
