@@ -118,16 +118,27 @@
       .sticky-cart { position: static; }
       .bean-card { padding: 1rem; }
 
-      /* 桌面版橫排不動，只調整 bean-body 在手機上的寬度 */
-      .bean-body { min-width: 0; flex: 1; }
-      .bean-left { min-width: 120px; }
-      .bean-right { min-width: 0; }
+      /* 手機版：bean-header 改直排 */
+      .bean-header { flex-direction: column; gap: 0; }
+      .bean-num { font-size: 18px; margin-bottom: 4px; }
 
-      /* 品名不縮小，保持原有大小 */
+      /* bean-body 直排：品名在上，tasting notes 在下 */
+      .bean-body { flex-direction: column; gap: 0.6rem; width: 100%; }
+      .bean-left { width: 100%; min-width: 0; }
       .bean-name { font-size: 17px; }
+      .bean-tags { margin-top: 6px; }
+
+      /* 金額在品名下方 */
+      .bean-price-wrap { order: 1; margin-top: 4px; justify-content: flex-start; }
+      .bean-price { font-size: 20px; }
+      .bean-price-unit { font-size: 13px; }
+
+      /* tasting notes：風味順著排，不換行 */
+      .bean-right { border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.7rem; width: 100%; }
+      .flavor-pills { flex-wrap: wrap; gap: 5px; }
       .flavor-pill { font-size: 13px; padding: 4px 10px; }
 
-      /* 選購列：咖啡豆品名+數字同一行，濾掛濾泡同一行 */
+      /* 選購控制 */
       .ctrl-row { gap: 6px; }
       .ctrl-inner-row { flex-wrap: nowrap; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .ctrl-label { font-size: 14px; }
