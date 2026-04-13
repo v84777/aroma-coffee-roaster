@@ -118,29 +118,33 @@
       .sticky-cart { position: static; }
       .bean-card { padding: 1rem; }
 
-      /* bean-header：編號＋body＋price 橫排 */
-      .bean-header { flex-direction: row; align-items: flex-start; gap: 8px; }
-      .bean-num { font-size: 18px; flex-shrink: 0; }
+      /* bean-header 直排：品名區 + 風味區 上下排 */
+      .bean-header { flex-direction: column; gap: 0.6rem; }
+      .bean-num { font-size: 18px; }
 
-      /* bean-body：左欄品名＋右欄風味 橫排 */
-      .bean-body { flex-direction: row; gap: 0.8rem; flex: 1; min-width: 0; }
-      .bean-left { flex-shrink: 0; min-width: 0; max-width: 45%; }
+      /* bean-body 橫排：左欄品名、右欄風味 */
+      .bean-body { flex-direction: row; gap: 0.8rem; width: 100%; }
+      .bean-left { flex-shrink: 0; min-width: 0; max-width: 45%; display: flex; flex-direction: column; }
       .bean-name { font-size: 16px; }
       .bean-tags { margin-top: 6px; flex-wrap: wrap; }
       .tag { font-size: 11px; padding: 3px 8px; }
 
-      /* 金額在品名下方（bean-left 裡） */
-      .bean-price-wrap { display: flex; justify-content: flex-start; margin-top: 6px; }
+      /* 金額在 bean-left 最下方，品名和標籤下面 */
+      .bean-price-wrap { margin-top: 8px; justify-content: flex-start; }
       .bean-price { font-size: 18px; }
       .bean-price-unit { font-size: 12px; }
 
-      /* tasting notes 右欄：風味順著排不強制換行 */
+      /* 右欄風味，金額不在這裡 */
       .bean-right { border-left: 1px solid var(--divider); border-top: none; padding-left: 0.8rem; padding-top: 0; flex: 1; min-width: 0; }
       .flavors-label { font-size: 12px; }
       .flavor-pills { flex-wrap: wrap; gap: 5px; }
       .flavor-pill { font-size: 12px; padding: 3px 9px; }
 
-      /* 選購控制 */
+      /* 桌面版的 bean-price-wrap 在 bean-header 最右，手機版隱藏它 */
+      .bean-header > .bean-price-wrap { display: none; }
+      /* 只顯示 bean-left 裡的金額 */
+      .bean-left > .bean-price-wrap { display: flex !important; }
+
       .ctrl-row { gap: 6px; }
       .ctrl-inner-row { flex-wrap: nowrap; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .ctrl-label { font-size: 14px; }
@@ -186,6 +190,7 @@
             <div class="bean-left">
               <div class="bean-name">衣索比亞 西達摩<br>花貝果娜村 G1</div>
               <div class="bean-tags"><span class="tag">黃蜜處理</span><span class="tag">#74158</span></div>
+              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -214,6 +219,7 @@
             <div class="bean-left">
               <div class="bean-name">衣索比亞 西達摩<br>波娜山徑 芭蕾 G1</div>
               <div class="bean-tags"><span class="tag">日曬</span><span class="tag">原生種</span></div>
+              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -242,6 +248,7 @@
             <div class="bean-left">
               <div class="bean-name">衣索比亞 西達摩<br>花貝果娜村 頂級 G1</div>
               <div class="bean-tags"><span class="tag">水洗</span><span class="tag">#74158</span></div>
+              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$480</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -272,6 +279,7 @@
             <div class="bean-left">
               <div class="bean-name">哥斯大黎加 塔拉佐<br>雲頂 火山寶藏莊園</div>
               <div class="bean-tags"><span class="tag">日曬</span><span class="tag">卡杜拉</span></div>
+              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -300,6 +308,7 @@
             <div class="bean-left">
               <div class="bean-name">哥倫比亞 娜麗諾<br>花境</div>
               <div class="bean-tags"><span class="tag">水洗</span><span class="tag">藝伎</span></div>
+              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$750</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
