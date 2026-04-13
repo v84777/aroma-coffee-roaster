@@ -117,23 +117,24 @@
       .cart-wrap { width: 100%; }
       .sticky-cart { position: static; }
       .bean-card { padding: 1rem; }
-      .bean-header { display: flex; flex-direction: column; gap: 0; }
-      .bean-num { font-size: 18px; margin-bottom: 4px; }
-      .bean-body { flex-direction: column; gap: 0.6rem; width: 100%; }
-      .bean-left { width: 100%; min-width: 0; }
-      .bean-name { font-size: 16px; }
-      .bean-tags { margin-top: 6px; }
-      .bean-right { border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.7rem; width: 100%; }
+
+      /* 桌面版橫排不動，只調整 bean-body 在手機上的寬度 */
+      .bean-body { min-width: 0; flex: 1; }
+      .bean-left { min-width: 120px; }
+      .bean-right { min-width: 0; }
+
+      /* 品名不縮小，保持原有大小 */
+      .bean-name { font-size: 17px; }
       .flavor-pill { font-size: 13px; padding: 4px 10px; }
-      .bean-price-wrap { display: flex; align-items: baseline; gap: 4px; margin-top: 6px; }
-      .bean-price { font-size: 20px; }
-      .bean-price-unit { font-size: 13px; }
+
+      /* 選購列：咖啡豆品名+數字同一行，濾掛濾泡同一行 */
       .ctrl-row { gap: 6px; }
       .ctrl-inner-row { flex-wrap: nowrap; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .ctrl-label { font-size: 13px; }
+      .ctrl-label { font-size: 14px; }
       .ctrl-price { font-size: 12px; white-space: nowrap; }
-      .qty-btn { width: 30px; height: 30px; }
-      .qty-num { font-size: 16px; }
+      .qty-btn { width: 32px; height: 32px; font-size: 18px; flex-shrink: 0; }
+      .qty-num { font-size: 17px; min-width: 20px; }
+
       .form-row { flex-direction: column; gap: 0; }
     }
   </style>
