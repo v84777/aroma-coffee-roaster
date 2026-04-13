@@ -47,14 +47,14 @@
 
     .order-ctrl { border-top: 1px solid var(--divider); padding-top: 1rem; }
     .ctrl-row { display: flex; flex-direction: column; gap: 8px; }
-    .ctrl-inner-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+    .ctrl-inner-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
     .ctrl-group { display: flex; align-items: center; gap: 7px; }
     .ctrl-label { font-size: 15px; color: #5A4A35; white-space: nowrap; font-weight: 500; }
     .qty-btn { width: 34px; height: 34px; border: 1px solid #C4B08A; border-radius: 2px; background: var(--cream); color: #1E1608; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; flex-shrink: 0; }
     .qty-btn:hover { background: #E8DFD0; }
     .qty-num { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #1E1608; min-width: 22px; text-align: center; color: var(--warm-dark); }
     .ctrl-price { font-size: 13px; color: #96753A; }
-    .ctrl-divider { width: 1px; height: 22px; background: var(--divider); margin: 0 4px; }
+    .ctrl-divider { width: 1px; height: 22px; background: var(--divider); }
 
     .cart-wrap { width: 230px; flex-shrink: 0; }
     .sticky-cart { position: sticky; top: 1.5rem; background: #F0EAD9; border: 1px solid var(--divider); border-radius: 2px; padding: 1.4rem; }
@@ -112,16 +112,29 @@
 
     @media (max-width: 760px) {
       body { padding-bottom: 80px; }
-      .main-layout { flex-direction: column; padding: 1.5rem 1rem 2rem; }
+      .main-layout { flex-direction: column; padding: 1rem; }
       .bean-list { padding-right: 0; }
       .cart-wrap { width: 100%; }
       .sticky-cart { position: static; }
-      .bean-body { flex-direction: column; gap: 0.8rem; }
-      .bean-left { min-width: unset; width: 100%; }
-      .bean-right { border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.8rem; flex: unset; width: 100%; min-width: 0; }
-      .bean-price-wrap { width: 100%; text-align: left; justify-content: flex-start; margin-top: 6px; }
+      .bean-card { padding: 1rem; }
+      .bean-header { display: flex; flex-direction: column; gap: 0; }
+      .bean-num { font-size: 18px; margin-bottom: 4px; }
+      .bean-body { flex-direction: column; gap: 0.6rem; width: 100%; }
+      .bean-left { width: 100%; min-width: 0; }
+      .bean-name { font-size: 16px; }
+      .bean-tags { margin-top: 6px; }
+      .bean-right { border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.7rem; width: 100%; }
+      .flavor-pill { font-size: 13px; padding: 4px 10px; }
+      .bean-price-wrap { display: flex; align-items: baseline; gap: 4px; margin-top: 6px; }
+      .bean-price { font-size: 20px; }
+      .bean-price-unit { font-size: 13px; }
+      .ctrl-row { gap: 6px; }
+      .ctrl-inner-row { flex-wrap: nowrap; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .ctrl-label { font-size: 13px; }
+      .ctrl-price { font-size: 12px; white-space: nowrap; }
+      .qty-btn { width: 30px; height: 30px; }
+      .qty-num { font-size: 16px; }
       .form-row { flex-direction: column; gap: 0; }
-      .ctrl-inner-row { flex-wrap: nowrap; }
     }
   </style>
 </head>
