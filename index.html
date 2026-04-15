@@ -57,6 +57,8 @@
     .bean-price-unit { font-size: 14px; color: #7A6A52; }
 
     .order-ctrl { border-top: 1px solid var(--divider); padding-top: 1rem; }
+    .order-toggle-btn { display: none; }
+    .order-ctrl-mobile { display: none; }
     .ctrl-row { display: flex; flex-direction: column; gap: 8px; }
     .ctrl-inner-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
     .ctrl-group { display: flex; align-items: center; gap: 7px; }
@@ -246,6 +248,39 @@
             <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
+        <div class="order-toggle-btn" id="toggle-0" onclick="toggleOrder(0)">
+          <div class="order-toggle-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8965A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span class="order-toggle-label" id="toggle-label-0">加入購物車</span>
+            <span class="order-toggle-hint" id="toggle-hint-0">點此選購 ›</span>
+            <span class="order-toggle-summary" id="toggle-summary-0" style="display:none;"></span>
+          </div>
+          <span class="order-toggle-arrow" id="toggle-arrow-0">▼</span>
+        </div>
+        <div class="order-ctrl-mobile" id="order-mobile-0">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">咖啡豆</span>
+            <button class="qty-btn" onclick="updateQty('bean',0,-1)">−</button>
+            <input type="number" class="qty-input" id="bean-m-0" value="0" min="0" max="20" oninput="handleInputSync('bean',0,20)">
+            <button class="qty-btn" onclick="updateQty('bean',0,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$520/袋</span>
+          </div>
+          <div style="height:1px;background:#E8DFD0;margin:4px 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;margin-top:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾掛包</span>
+            <button class="qty-btn" onclick="updateQty('drip',0,-1)">−</button>
+            <input type="number" class="qty-input" id="drip-m-0" value="0" min="0" max="50" oninput="handleInputSync('drip',0,50)">
+            <button class="qty-btn" onclick="updateQty('drip',0,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾泡包</span>
+            <button class="qty-btn" onclick="updateQty('filter',0,-1)">−</button>
+            <input type="number" class="qty-input" id="filter-m-0" value="0" min="0" max="50" oninput="handleInputSync('filter',0,50)">
+            <button class="qty-btn" onclick="updateQty('filter',0,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+        </div>
       </div>
 
       <div class="bean-card">
@@ -274,6 +309,39 @@
             <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
+        <div class="order-toggle-btn" id="toggle-1" onclick="toggleOrder(1)">
+          <div class="order-toggle-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8965A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span class="order-toggle-label" id="toggle-label-1">加入購物車</span>
+            <span class="order-toggle-hint" id="toggle-hint-1">點此選購 ›</span>
+            <span class="order-toggle-summary" id="toggle-summary-1" style="display:none;"></span>
+          </div>
+          <span class="order-toggle-arrow" id="toggle-arrow-1">▼</span>
+        </div>
+        <div class="order-ctrl-mobile" id="order-mobile-1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">咖啡豆</span>
+            <button class="qty-btn" onclick="updateQty('bean',1,-1)">−</button>
+            <input type="number" class="qty-input" id="bean-m-1" value="0" min="0" max="20" oninput="handleInputSync('bean',1,20)">
+            <button class="qty-btn" onclick="updateQty('bean',1,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$520/袋</span>
+          </div>
+          <div style="height:1px;background:#E8DFD0;margin:4px 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;margin-top:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾掛包</span>
+            <button class="qty-btn" onclick="updateQty('drip',1,-1)">−</button>
+            <input type="number" class="qty-input" id="drip-m-1" value="0" min="0" max="50" oninput="handleInputSync('drip',1,50)">
+            <button class="qty-btn" onclick="updateQty('drip',1,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾泡包</span>
+            <button class="qty-btn" onclick="updateQty('filter',1,-1)">−</button>
+            <input type="number" class="qty-input" id="filter-m-1" value="0" min="0" max="50" oninput="handleInputSync('filter',1,50)">
+            <button class="qty-btn" onclick="updateQty('filter',1,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+        </div>
       </div>
 
       <div class="bean-card">
@@ -302,6 +370,39 @@
             <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
+        <div class="order-toggle-btn" id="toggle-2" onclick="toggleOrder(2)">
+          <div class="order-toggle-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8965A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span class="order-toggle-label" id="toggle-label-2">加入購物車</span>
+            <span class="order-toggle-hint" id="toggle-hint-2">點此選購 ›</span>
+            <span class="order-toggle-summary" id="toggle-summary-2" style="display:none;"></span>
+          </div>
+          <span class="order-toggle-arrow" id="toggle-arrow-2">▼</span>
+        </div>
+        <div class="order-ctrl-mobile" id="order-mobile-2">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">咖啡豆</span>
+            <button class="qty-btn" onclick="updateQty('bean',2,-1)">−</button>
+            <input type="number" class="qty-input" id="bean-m-2" value="0" min="0" max="20" oninput="handleInputSync('bean',2,20)">
+            <button class="qty-btn" onclick="updateQty('bean',2,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$480/袋</span>
+          </div>
+          <div style="height:1px;background:#E8DFD0;margin:4px 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;margin-top:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾掛包</span>
+            <button class="qty-btn" onclick="updateQty('drip',2,-1)">−</button>
+            <input type="number" class="qty-input" id="drip-m-2" value="0" min="0" max="50" oninput="handleInputSync('drip',2,50)">
+            <button class="qty-btn" onclick="updateQty('drip',2,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾泡包</span>
+            <button class="qty-btn" onclick="updateQty('filter',2,-1)">−</button>
+            <input type="number" class="qty-input" id="filter-m-2" value="0" min="0" max="50" oninput="handleInputSync('filter',2,50)">
+            <button class="qty-btn" onclick="updateQty('filter',2,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+        </div>
       </div>
 
       <div class="region-label"><div class="region-line"></div><span>中南美洲</span><div class="region-line"></div></div>
@@ -332,6 +433,39 @@
             <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
+        <div class="order-toggle-btn" id="toggle-3" onclick="toggleOrder(3)">
+          <div class="order-toggle-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8965A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span class="order-toggle-label" id="toggle-label-3">加入購物車</span>
+            <span class="order-toggle-hint" id="toggle-hint-3">點此選購 ›</span>
+            <span class="order-toggle-summary" id="toggle-summary-3" style="display:none;"></span>
+          </div>
+          <span class="order-toggle-arrow" id="toggle-arrow-3">▼</span>
+        </div>
+        <div class="order-ctrl-mobile" id="order-mobile-3">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">咖啡豆</span>
+            <button class="qty-btn" onclick="updateQty('bean',3,-1)">−</button>
+            <input type="number" class="qty-input" id="bean-m-3" value="0" min="0" max="20" oninput="handleInputSync('bean',3,20)">
+            <button class="qty-btn" onclick="updateQty('bean',3,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$520/袋</span>
+          </div>
+          <div style="height:1px;background:#E8DFD0;margin:4px 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;margin-top:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾掛包</span>
+            <button class="qty-btn" onclick="updateQty('drip',3,-1)">−</button>
+            <input type="number" class="qty-input" id="drip-m-3" value="0" min="0" max="50" oninput="handleInputSync('drip',3,50)">
+            <button class="qty-btn" onclick="updateQty('drip',3,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾泡包</span>
+            <button class="qty-btn" onclick="updateQty('filter',3,-1)">−</button>
+            <input type="number" class="qty-input" id="filter-m-3" value="0" min="0" max="50" oninput="handleInputSync('filter',3,50)">
+            <button class="qty-btn" onclick="updateQty('filter',3,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+        </div>
       </div>
 
       <div class="bean-card">
@@ -360,6 +494,39 @@
             <span class="ctrl-price">$45/包</span>
           </div>
         </div></div>
+        <div class="order-toggle-btn" id="toggle-4" onclick="toggleOrder(4)">
+          <div class="order-toggle-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8965A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span class="order-toggle-label" id="toggle-label-4">加入購物車</span>
+            <span class="order-toggle-hint" id="toggle-hint-4">點此選購 ›</span>
+            <span class="order-toggle-summary" id="toggle-summary-4" style="display:none;"></span>
+          </div>
+          <span class="order-toggle-arrow" id="toggle-arrow-4">▼</span>
+        </div>
+        <div class="order-ctrl-mobile" id="order-mobile-4">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">咖啡豆</span>
+            <button class="qty-btn" onclick="updateQty('bean',4,-1)">−</button>
+            <input type="number" class="qty-input" id="bean-m-4" value="0" min="0" max="20" oninput="handleInputSync('bean',4,20)">
+            <button class="qty-btn" onclick="updateQty('bean',4,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$750/袋</span>
+          </div>
+          <div style="height:1px;background:#E8DFD0;margin:4px 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;margin-top:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾掛包</span>
+            <button class="qty-btn" onclick="updateQty('drip',4,-1)">−</button>
+            <input type="number" class="qty-input" id="drip-m-4" value="0" min="0" max="50" oninput="handleInputSync('drip',4,50)">
+            <button class="qty-btn" onclick="updateQty('drip',4,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:15px;color:#5A4A35;font-family:'Noto Serif TC',serif;width:52px;flex-shrink:0;">濾泡包</span>
+            <button class="qty-btn" onclick="updateQty('filter',4,-1)">−</button>
+            <input type="number" class="qty-input" id="filter-m-4" value="0" min="0" max="50" oninput="handleInputSync('filter',4,50)">
+            <button class="qty-btn" onclick="updateQty('filter',4,1)">+</button>
+            <span style="font-size:12px;color:#B8965A;">$45/包</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -588,6 +755,9 @@
       }
       cart[type][idx] = val;
       input.value = val;
+      const mEl = document.getElementById(type+'-m-'+idx);
+      if (mEl) mEl.value = val;
+      updateToggleBtn(idx);
       saveCart();
       renderCart();
     }
@@ -770,6 +940,47 @@
       else if(method==='7-11 店到店'||method==='全家 店到店'){pg.style.display='none';ag.style.display='block';al.innerHTML='取件門市名稱 <span class="req">*</span>';ai.placeholder='請輸入門市名稱（例如：台北忠孝門市）';pi.required=false;ai.required=true;}
       else{pg.style.display='none';ag.style.display='none';pi.required=false;ai.required=false;}
       renderCart();
+    }
+
+    function toggleOrder(i) {
+      const body = document.getElementById('order-mobile-'+i);
+      const arrow = document.getElementById('toggle-arrow-'+i);
+      body.classList.toggle('open');
+      arrow.classList.toggle('open');
+      updateToggleBtn(i);
+    }
+
+    function handleInputSync(type, idx, max) {
+      handleInput(type, idx, max);
+      const mEl = document.getElementById(type+'-m-'+idx);
+      if (mEl) mEl.value = cart[type][idx];
+      updateToggleBtn(idx);
+    }
+
+    function updateToggleBtn(i) {
+      const bean = cart.bean[i]||0, drip = cart.drip[i]||0, filter = cart.filter[i]||0;
+      const hasItem = bean>0 || drip>0 || filter>0;
+      const btn = document.getElementById('toggle-'+i);
+      const label = document.getElementById('toggle-label-'+i);
+      const hint = document.getElementById('toggle-hint-'+i);
+      const summary = document.getElementById('toggle-summary-'+i);
+      if (!btn) return;
+      if (hasItem) {
+        btn.style.background = '#EEE6D6';
+        label.textContent = '已選購';
+        hint.style.display = 'none';
+        summary.style.display = 'inline';
+        let parts = [];
+        if (bean>0) parts.push('咖啡豆 x'+bean);
+        if (drip>0) parts.push('濾掛 x'+drip);
+        if (filter>0) parts.push('濾泡 x'+filter);
+        summary.textContent = parts.join('・');
+      } else {
+        btn.style.background = '#F0EAD9';
+        label.textContent = '加入購物車';
+        hint.style.display = 'inline';
+        summary.style.display = 'none';
+      }
     }
 
     window.addEventListener('load', loadCart);
