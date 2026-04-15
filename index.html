@@ -29,15 +29,15 @@
     .region-label span { font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: 0.35em; color: #96753A; white-space: nowrap; font-weight: 500; }
     .region-line { flex: 1; height: 1px; background: var(--divider); }
 
-    .bean-card { background: var(--card-bg); border: 1px solid #E2D5BB; border-radius: 2px; padding: 1.4rem 1.5rem; margin-bottom: 1rem; }
+    .bean-card { background: var(--card-bg); border: 1px solid #E2D5BB; border-radius: 2px; padding: 1.4rem 1.5rem; margin-bottom: 1rem; overflow: hidden; }
     .bean-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0.5rem; }
     .bean-num { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold); font-weight: 300; line-height: 1; min-width: 26px; flex-shrink: 0; margin-top: 2px; }
-    .bean-body { flex: 1; display: flex; gap: 1rem; align-items: flex-start; }
+    .bean-body { flex: 1; display: flex; gap: 1rem; align-items: flex-start; min-width: 0; overflow: hidden; }
     .bean-left { flex-shrink: 0; min-width: 150px; }
     .bean-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 400; line-height: 1.5; color: var(--warm-dark); }
     .bean-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
     .tag { background: var(--tag-bg); color: #6B5A40; font-size: 13px; padding: 5px 12px; border-radius: 2px; display: inline-flex; align-items: center; line-height: 1; }
-    .bean-right { flex: 1; border-left: 1px solid var(--divider); padding-left: 1.2rem; }
+    .bean-right { flex: 1; border-left: 1px solid var(--divider); padding-left: 1.2rem; min-width: 0; overflow: hidden; }
     .flavors-label { font-size: 14px; letter-spacing: 0.15em; color: #5A4020; margin-bottom: 8px; font-family: 'Cormorant Garamond', serif; font-weight: 500; }
     .flavor-pills { display: flex; flex-wrap: wrap; gap: 6px; }
     .flavor-pill { font-size: 15px; color: #5A4A35; background: var(--pill-bg); padding: 4px 12px; border-radius: 20px; }
@@ -387,6 +387,7 @@
           <div class="form-group"><label>聯絡電話 <span class="req">*</span></label><input type="tel" name="電話" required placeholder="請輸入電話"></div>
         </div>
         <div class="form-group"><label>電子信箱</label><input type="email" name="email" placeholder="選填"></div>
+        <div class="form-group"><label>匯款後5碼</label><input type="text" name="匯款後5碼" placeholder="付款後填寫（選填）" maxlength="5" pattern="[0-9]*" inputmode="numeric"></div>
         <div class="form-group">
           <label>寄送方式 <span class="req">*</span></label>
           <select name="寄送方式" id="shipMethod" required onchange="toggleShip()">
