@@ -447,8 +447,8 @@
 
   <!-- 手機底部浮動結帳列 -->
   <!-- 購物車浮動面板 -->
-  <div id="cartPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(44,36,22,0.5);" onclick="if(event.target===this)closeCartPanel()">
-    <div style="background:#F7F3EC;border-radius:12px 12px 0 0;padding:1.5rem 1.5rem 2rem;max-height:70vh;overflow-y:auto;">
+  <div id="cartPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;">
+    <div style="background:#F7F3EC;border-radius:12px 12px 0 0;padding:1.5rem 1.5rem 2rem;max-height:70vh;overflow-y:auto;box-shadow:0 -4px 20px rgba(44,36,22,0.15);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
         <span style="font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:0.2em;color:#B8965A;">購 物 車</span>
         <button onclick="closeCartPanel()" style="background:none;border:none;font-size:22px;color:#8A7A62;cursor:pointer;padding:0;">×</button>
@@ -456,13 +456,13 @@
       <div id="panelCartItems"></div>
       <div id="panelCartSummary" style="display:none;">
         <hr style="border:none;border-top:1px solid #D9C9A8;margin:10px 0;">
-        <div style="display:flex;justify-content:space-between;font-size:13px;color:#8A7A62;margin-bottom:4px;"><span>商品小計</span><span id="panelSubtotal">$0</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;color:#8A7A62;margin-bottom:12px;"><span>運費</span><span id="panelShip">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;color:#8A7A62;margin-bottom:4px;"><span>商品小計</span><span id="panelSubtotal">$0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;color:#8A7A62;margin-bottom:12px;"><span>運費</span><span id="panelShip">—</span></div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-          <span style="font-size:15px;color:#2C2416;">合計</span>
-          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#2C2416;">$<span id="panelTotal">0</span></span>
+          <span style="font-size:16px;color:#2C2416;">合計</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#2C2416;">$<span id="panelTotal">0</span></span>
         </div>
-        <button onclick="closeCartPanel();openCheckout();" style="width:100%;padding:14px;background:#2C2416;color:#F7F3EC;border:none;border-radius:2px;font-family:'Noto Serif TC',serif;font-size:14px;letter-spacing:0.12em;cursor:pointer;">前往結帳</button>
+        <button onclick="closeCartPanel();openCheckout();" style="width:100%;padding:14px;background:#2C2416;color:#F7F3EC;border:none;border-radius:2px;font-family:'Noto Serif TC',serif;font-size:15px;letter-spacing:0.12em;cursor:pointer;">前往結帳</button>
       </div>
       <div id="panelEmpty" style="text-align:center;padding:1.5rem 0;font-size:14px;color:#8A7A62;">尚未選購任何商品</div>
     </div>
@@ -678,9 +678,19 @@
           panelEmpty.style.display = 'none';
           panelSummary.style.display = 'block';
           panelItems.innerHTML = lines.map(l =>
-            `<div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:8px;gap:8px;">
-              <span style="color:#8A7A62;flex:1;line-height:1.4;">${l.name} x${l.qty}</span>
-              <span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#2C2416;white-space:nowrap;">$${l.price.toLocaleString()}</span>
+            `<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1.5px solid #D4B896;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;">
+                <span style="color:#8A7A62;flex:1;line-height:1.4;font-size:14px;">${l.name}</span>
+                <button onclick="cartAdjust('${l.type}',${l.idx},-999)" style="border:none;background:none;color:#B8965A;font-size:20px;cursor:pointer;padding:0;margin-left:8px;line-height:1;flex-shrink:0;">×</button>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <button onclick="cartAdjust('${l.type}',${l.idx},-1)" style="width:30px;height:30px;border:1px solid #D9C9A8;border-radius:2px;background:#F7F3EC;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#2C2416;">−</button>
+                  <input type="number" value="${l.qty}" min="0" max="${l.type==='bean'?20:50}" onchange="cartInputChange('${l.type}',${l.idx},this.value)" style="width:46px;height:30px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:#1E1608;background:#FFFDF8;border:1.5px solid #C4A96E;border-radius:2px;outline:none;padding:0 2px;-moz-appearance:textfield;">
+                  <button onclick="cartAdjust('${l.type}',${l.idx},1)" style="width:30px;height:30px;border:1px solid #D9C9A8;border-radius:2px;background:#F7F3EC;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#2C2416;">+</button>
+                </div>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:17px;color:#2C2416;">$${l.price.toLocaleString()}</span>
+              </div>
             </div>`
           ).join('');
           document.getElementById('panelSubtotal').textContent = '$' + subtotal.toLocaleString();
@@ -733,15 +743,20 @@
 
     function toggleCartPanel() {
       const panel = document.getElementById('cartPanel');
+      const backToTop = document.getElementById('backToTop');
       if (panel.style.display === 'none' || panel.style.display === '') {
         panel.style.display = 'block';
+        if (backToTop) backToTop.style.display = 'none';
       } else {
         panel.style.display = 'none';
+        if (backToTop && window.scrollY > 300) backToTop.style.display = 'flex';
       }
     }
 
     function closeCartPanel() {
       document.getElementById('cartPanel').style.display = 'none';
+      const backToTop = document.getElementById('backToTop');
+      if (backToTop && window.scrollY > 300) backToTop.style.display = 'flex';
     }
 
     function closeCheckout() { document.getElementById('checkoutModal').classList.remove('show'); }
