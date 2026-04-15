@@ -14,7 +14,7 @@
       --muted: #8A7A62; --divider: #D9C9A8; --card-bg: #FFFDF8;
       --tag-bg: #EEE6D6; --pill-bg: #EFF0EB;
     }
-    body { background: var(--cream); font-family: 'Noto Serif TC', serif; color: var(--warm-dark); overflow-x: hidden; }
+    body { background: var(--cream); font-family: 'Noto Serif TC', serif; color: var(--warm-dark); overflow-x: hidden; max-width: 100vw; }
 
     .hero { text-align: center; padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--divider); max-width: 100%; }
     .logo-container svg { height: 64px; width: auto; }
@@ -145,7 +145,7 @@
       .bean-list { padding-right: 0; }
       .cart-wrap { display: none; }
       .sticky-cart { position: static; }
-      .bean-card { padding: 0.8rem; overflow: hidden; width: 100%; box-sizing: border-box; }
+      .bean-card { padding: 0.8rem; overflow: hidden; width: 100%; box-sizing: border-box; max-width: calc(100vw - 2rem); }
       .bean-body { overflow: hidden; width: 100%; box-sizing: border-box; }
       .bean-right { overflow: hidden; max-width: 100%; word-break: break-word; }
       .flavor-pills { overflow: hidden; }
@@ -161,7 +161,7 @@
       .bean-price-wrap { margin-top: 8px; justify-content: flex-start; }
       .bean-price { font-size: 24px; }
       .bean-price-unit { font-size: 15px; }
-      .bean-right { border-left: 1px solid var(--divider); border-top: none; padding-left: 0.6rem; padding-top: 0; flex: 1; min-width: 0; overflow: hidden; width: 0; }
+      .bean-right { border-left: 1px solid var(--divider); border-top: none; padding-left: 0.6rem; padding-top: 0; flex: 1; min-width: 0; max-width: 0; overflow: hidden; flex-basis: 45%; }
       .flavors-label { font-size: 15px; }
       .flavor-pills { flex-wrap: wrap; gap: 5px; overflow: hidden; }
       .flavor-pill { font-size: 15px; padding: 6px 13px; }
@@ -226,7 +226,6 @@
             <div class="bean-left">
               <div class="bean-name">衣索比亞 西達摩<br>花貝果娜村 G1</div>
               <div class="bean-tags"><span class="tag">黃蜜處理</span><span class="tag">#74158</span></div>
-              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -255,7 +254,6 @@
             <div class="bean-left">
               <div class="bean-name">衣索比亞 西達摩<br>波娜山徑 芭蕾 G1</div>
               <div class="bean-tags"><span class="tag">日曬</span><span class="tag">原生種</span></div>
-              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -284,7 +282,6 @@
             <div class="bean-left">
               <div class="bean-name">衣索比亞 西達摩<br>花貝果娜村 頂級 G1</div>
               <div class="bean-tags"><span class="tag">水洗</span><span class="tag">#74158</span></div>
-              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$480</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -315,7 +312,6 @@
             <div class="bean-left">
               <div class="bean-name">哥斯大黎加 塔拉佐<br>雲頂 火山寶藏莊園</div>
               <div class="bean-tags"><span class="tag">日曬</span><span class="tag">卡杜拉</span></div>
-              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
@@ -344,7 +340,6 @@
             <div class="bean-left">
               <div class="bean-name">哥倫比亞 娜麗諾<br>花境</div>
               <div class="bean-tags"><span class="tag">水洗</span><span class="tag">藝伎</span></div>
-              <div class="bean-price-wrap" style="display:none;"><div class="bean-price">$750</div><div class="bean-price-unit">/ 220g</div></div>
             </div>
             <div class="bean-right">
               <div class="flavors-label">TASTING NOTES</div>
