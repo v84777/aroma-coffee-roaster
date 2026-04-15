@@ -45,7 +45,7 @@
     .bean-num { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold); font-weight: 300; line-height: 1; min-width: 26px; flex-shrink: 0; margin-top: 2px; }
     .bean-body { flex: 1; display: flex; gap: 1rem; align-items: flex-start; min-width: 0; overflow: hidden; }
     .bean-left { flex-shrink: 0; min-width: 150px; }
-    .bean-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 400; line-height: 1.5; color: var(--warm-dark); }
+    .bean-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 400; line-height: 1.5; color: var(--warm-dark); overflow-wrap: break-word; word-break: keep-all; }
     .bean-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
     .tag { background: var(--tag-bg); color: #6B5A40; font-size: 13px; padding: 5px 12px; border-radius: 2px; display: inline-flex; align-items: center; line-height: 1; }
     .bean-right { flex: 1; border-left: 1px solid var(--divider); padding-left: 1.2rem; min-width: 0; overflow: hidden; }
@@ -267,10 +267,10 @@
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
-            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',0,-1)">−</button><input type="number" class="qty-input" id="bean-0" value="0" min="0" max="20" oninput="handleInput('bean',0,20)"><button class="qty-btn" onclick="updateQty('bean',0,1)">+</button><span class="ctrl-price">$520/袋</span></div>
+            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',0,-1)">−</button><input type="number" class="qty-input" id="bean-0" value="0" min="0" max="20" oninput="handleInput('bean',0,20)"><button class="qty-btn" onclick="updateQty('bean',0,1)">+</button><span class="ctrl-price">$520 / 220g</span></div>
           </div>
           <div class="ctrl-inner-row" style="align-items:center;">
-            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',0,-1)">−</button><input type="number" class="qty-input" id="drip-0" value="0" min="0" max="50" oninput="handleInput('drip',0,50)"><button class="qty-btn" onclick="updateQty('drip',0,1)">+</button></div>
+            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',0,-1)">−</button><input type="number" class="qty-input" id="drip-0" value="0" min="0" max="50" oninput="handleInput('drip',0,50)"><button class="qty-btn" onclick="updateQty('drip',0,1)">+</button><span class="ctrl-price">$45/包</span></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',0,-1)">−</button><input type="number" class="qty-input" id="filter-0" value="0" min="0" max="50" oninput="handleInput('filter',0,50)"><button class="qty-btn" onclick="updateQty('filter',0,1)">+</button></div>
             <span class="ctrl-price">$45/包</span>
@@ -293,7 +293,7 @@
             <button class="qty-btn" onclick="updateQty('bean',0,-1)">−</button>
             <input type="number" class="qty-input" id="bean-m-0" value="0" min="0" max="20" oninput="handleInputSync('bean',0,20)">
             <button class="qty-btn" onclick="updateQty('bean',0,1)">+</button>
-            <span class="ocm-price">$520/袋</span>
+            <span class="ocm-price">$520 / 220g</span>
           </div>
           <div class="ocm-divider"></div>
           <div class="ocm-row">
@@ -330,10 +330,10 @@
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
-            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',1,-1)">−</button><input type="number" class="qty-input" id="bean-1" value="0" min="0" max="20" oninput="handleInput('bean',1,20)"><button class="qty-btn" onclick="updateQty('bean',1,1)">+</button><span class="ctrl-price">$520/袋</span></div>
+            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',1,-1)">−</button><input type="number" class="qty-input" id="bean-1" value="0" min="0" max="20" oninput="handleInput('bean',1,20)"><button class="qty-btn" onclick="updateQty('bean',1,1)">+</button><span class="ctrl-price">$520 / 220g</span></div>
           </div>
           <div class="ctrl-inner-row" style="align-items:center;">
-            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',1,-1)">−</button><input type="number" class="qty-input" id="drip-1" value="0" min="0" max="50" oninput="handleInput('drip',1,50)"><button class="qty-btn" onclick="updateQty('drip',1,1)">+</button></div>
+            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',1,-1)">−</button><input type="number" class="qty-input" id="drip-1" value="0" min="0" max="50" oninput="handleInput('drip',1,50)"><button class="qty-btn" onclick="updateQty('drip',1,1)">+</button><span class="ctrl-price">$45/包</span></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',1,-1)">−</button><input type="number" class="qty-input" id="filter-1" value="0" min="0" max="50" oninput="handleInput('filter',1,50)"><button class="qty-btn" onclick="updateQty('filter',1,1)">+</button></div>
             <span class="ctrl-price">$45/包</span>
@@ -356,7 +356,7 @@
             <button class="qty-btn" onclick="updateQty('bean',1,-1)">−</button>
             <input type="number" class="qty-input" id="bean-m-1" value="0" min="0" max="20" oninput="handleInputSync('bean',1,20)">
             <button class="qty-btn" onclick="updateQty('bean',1,1)">+</button>
-            <span class="ocm-price">$520/袋</span>
+            <span class="ocm-price">$520 / 220g</span>
           </div>
           <div class="ocm-divider"></div>
           <div class="ocm-row">
@@ -393,10 +393,10 @@
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
-            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',2,-1)">−</button><input type="number" class="qty-input" id="bean-2" value="0" min="0" max="20" oninput="handleInput('bean',2,20)"><button class="qty-btn" onclick="updateQty('bean',2,1)">+</button><span class="ctrl-price">$480/袋</span></div>
+            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',2,-1)">−</button><input type="number" class="qty-input" id="bean-2" value="0" min="0" max="20" oninput="handleInput('bean',2,20)"><button class="qty-btn" onclick="updateQty('bean',2,1)">+</button><span class="ctrl-price">$480 / 220g</span></div>
           </div>
           <div class="ctrl-inner-row" style="align-items:center;">
-            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',2,-1)">−</button><input type="number" class="qty-input" id="drip-2" value="0" min="0" max="50" oninput="handleInput('drip',2,50)"><button class="qty-btn" onclick="updateQty('drip',2,1)">+</button></div>
+            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',2,-1)">−</button><input type="number" class="qty-input" id="drip-2" value="0" min="0" max="50" oninput="handleInput('drip',2,50)"><button class="qty-btn" onclick="updateQty('drip',2,1)">+</button><span class="ctrl-price">$45/包</span></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',2,-1)">−</button><input type="number" class="qty-input" id="filter-2" value="0" min="0" max="50" oninput="handleInput('filter',2,50)"><button class="qty-btn" onclick="updateQty('filter',2,1)">+</button></div>
             <span class="ctrl-price">$45/包</span>
@@ -419,7 +419,7 @@
             <button class="qty-btn" onclick="updateQty('bean',2,-1)">−</button>
             <input type="number" class="qty-input" id="bean-m-2" value="0" min="0" max="20" oninput="handleInputSync('bean',2,20)">
             <button class="qty-btn" onclick="updateQty('bean',2,1)">+</button>
-            <span class="ocm-price">$480/袋</span>
+            <span class="ocm-price">$480 / 220g</span>
           </div>
           <div class="ocm-divider"></div>
           <div class="ocm-row">
@@ -458,10 +458,10 @@
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
-            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',3,-1)">−</button><input type="number" class="qty-input" id="bean-3" value="0" min="0" max="20" oninput="handleInput('bean',3,20)"><button class="qty-btn" onclick="updateQty('bean',3,1)">+</button><span class="ctrl-price">$520/袋</span></div>
+            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',3,-1)">−</button><input type="number" class="qty-input" id="bean-3" value="0" min="0" max="20" oninput="handleInput('bean',3,20)"><button class="qty-btn" onclick="updateQty('bean',3,1)">+</button><span class="ctrl-price">$520 / 220g</span></div>
           </div>
           <div class="ctrl-inner-row" style="align-items:center;">
-            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',3,-1)">−</button><input type="number" class="qty-input" id="drip-3" value="0" min="0" max="50" oninput="handleInput('drip',3,50)"><button class="qty-btn" onclick="updateQty('drip',3,1)">+</button></div>
+            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',3,-1)">−</button><input type="number" class="qty-input" id="drip-3" value="0" min="0" max="50" oninput="handleInput('drip',3,50)"><button class="qty-btn" onclick="updateQty('drip',3,1)">+</button><span class="ctrl-price">$45/包</span></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',3,-1)">−</button><input type="number" class="qty-input" id="filter-3" value="0" min="0" max="50" oninput="handleInput('filter',3,50)"><button class="qty-btn" onclick="updateQty('filter',3,1)">+</button></div>
             <span class="ctrl-price">$45/包</span>
@@ -484,7 +484,7 @@
             <button class="qty-btn" onclick="updateQty('bean',3,-1)">−</button>
             <input type="number" class="qty-input" id="bean-m-3" value="0" min="0" max="20" oninput="handleInputSync('bean',3,20)">
             <button class="qty-btn" onclick="updateQty('bean',3,1)">+</button>
-            <span class="ocm-price">$520/袋</span>
+            <span class="ocm-price">$520 / 220g</span>
           </div>
           <div class="ocm-divider"></div>
           <div class="ocm-row">
@@ -521,10 +521,10 @@
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
-            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',4,-1)">−</button><input type="number" class="qty-input" id="bean-4" value="0" min="0" max="20" oninput="handleInput('bean',4,20)"><button class="qty-btn" onclick="updateQty('bean',4,1)">+</button><span class="ctrl-price">$750/袋</span></div>
+            <div class="ctrl-group"><span class="ctrl-label">咖啡豆</span><button class="qty-btn" onclick="updateQty('bean',4,-1)">−</button><input type="number" class="qty-input" id="bean-4" value="0" min="0" max="20" oninput="handleInput('bean',4,20)"><button class="qty-btn" onclick="updateQty('bean',4,1)">+</button><span class="ctrl-price">$750 / 220g</span></div>
           </div>
           <div class="ctrl-inner-row" style="align-items:center;">
-            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',4,-1)">−</button><input type="number" class="qty-input" id="drip-4" value="0" min="0" max="50" oninput="handleInput('drip',4,50)"><button class="qty-btn" onclick="updateQty('drip',4,1)">+</button></div>
+            <div class="ctrl-group"><span class="ctrl-label">濾掛包</span><button class="qty-btn" onclick="updateQty('drip',4,-1)">−</button><input type="number" class="qty-input" id="drip-4" value="0" min="0" max="50" oninput="handleInput('drip',4,50)"><button class="qty-btn" onclick="updateQty('drip',4,1)">+</button><span class="ctrl-price">$45/包</span></div>
             <div class="ctrl-divider"></div>
             <div class="ctrl-group"><span class="ctrl-label">濾泡包</span><button class="qty-btn" onclick="updateQty('filter',4,-1)">−</button><input type="number" class="qty-input" id="filter-4" value="0" min="0" max="50" oninput="handleInput('filter',4,50)"><button class="qty-btn" onclick="updateQty('filter',4,1)">+</button></div>
             <span class="ctrl-price">$45/包</span>
@@ -547,7 +547,7 @@
             <button class="qty-btn" onclick="updateQty('bean',4,-1)">−</button>
             <input type="number" class="qty-input" id="bean-m-4" value="0" min="0" max="20" oninput="handleInputSync('bean',4,20)">
             <button class="qty-btn" onclick="updateQty('bean',4,1)">+</button>
-            <span class="ocm-price">$750/袋</span>
+            <span class="ocm-price">$750 / 220g</span>
           </div>
           <div class="ocm-divider"></div>
           <div class="ocm-row">
