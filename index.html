@@ -176,13 +176,15 @@
       .bean-num { font-size: 20px; display: inline-block; margin-bottom: 4px; }
       .bean-body { display: block; width: 100%; }
       .bean-left { display: block; width: 100%; }
-      .bean-name { font-size: 20px; display: block; margin-bottom: 6px; }
+      .bean-name { font-size: 18px; }
       .bean-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0; }
       .tag { font-size: 13px; padding: 4px 10px; }
 
       /* 金額隱藏（右側那個） */
-      .bean-header > .bean-price-wrap { display: none; }
-      .bean-price-wrap { display: none; }
+      /* 金額：手機版放到右上角，跟 bean-num 同行 */
+      .bean-price-wrap { flex-shrink: 0; margin-left: auto; text-align: right; }
+      .bean-price { font-size: 18px; }
+      .bean-price-unit { font-size: 12px; }
 
       /* 風味在品名下方 */
       .bean-right { display: block; width: 100%; border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.8rem; margin-top: 0.8rem; box-sizing: border-box; }
@@ -253,12 +255,10 @@
 
       <div class="bean-card">
         <div class="bean-header">
+          <div class="bean-num">1</div>
           <div class="bean-body">
             <div class="bean-left">
-              <div class="bean-name-row">
-                <div class="bean-name"><span class="bean-num">1</span> 衣索比亞 西達摩 花貝果娜村 G1</div>
-                <div class="bean-price-mobile-row"><span class="bean-price">$520</span><span class="bean-price-unit">/ 220g</span></div>
-              </div>
+              <div class="bean-name">衣索比亞 西達摩 花貝果娜村 G1</div>
               <div class="bean-tags"><span class="tag">黃蜜處理</span><span class="tag">#74158</span></div>
             </div>
             <div class="bean-right">
@@ -266,7 +266,6 @@
               <div class="flavor-pills"><span class="flavor-pill">杏桃</span><span class="flavor-pill">白花</span><span class="flavor-pill">蘋果</span><span class="flavor-pill">紅莓</span><span class="flavor-pill">甜橙</span></div>
             </div>
           </div>
-          <div class="bean-price-wrap"><div class="bean-price">$520</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
@@ -318,12 +317,10 @@
 
       <div class="bean-card">
         <div class="bean-header">
+          <div class="bean-num">2</div>
           <div class="bean-body">
             <div class="bean-left">
-              <div class="bean-name-row">
-                <div class="bean-name"><span class="bean-num">2</span> 衣索比亞 西達摩 波娜山徑 芭蕾 G1</div>
-                <div class="bean-price-mobile-row"><span class="bean-price">$520</span><span class="bean-price-unit">/ 220g</span></div>
-              </div>
+              <div class="bean-name">衣索比亞 西達摩 波娜山徑 芭蕾 G1</div>
               <div class="bean-tags"><span class="tag">日曬</span><span class="tag">原生種</span></div>
             </div>
             <div class="bean-right">
@@ -383,12 +380,10 @@
 
       <div class="bean-card">
         <div class="bean-header">
+          <div class="bean-num">3</div>
           <div class="bean-body">
             <div class="bean-left">
-              <div class="bean-name-row">
-                <div class="bean-name"><span class="bean-num">3</span> 衣索比亞 西達摩 花貝果娜村 頂級 G1</div>
-                <div class="bean-price-mobile-row"><span class="bean-price">$480</span><span class="bean-price-unit">/ 220g</span></div>
-              </div>
+              <div class="bean-name">衣索比亞 西達摩 花貝果娜村 頂級 G1</div>
               <div class="bean-tags"><span class="tag">水洗</span><span class="tag">#74158</span></div>
             </div>
             <div class="bean-right">
@@ -396,7 +391,6 @@
               <div class="flavor-pills"><span class="flavor-pill">野薑花</span><span class="flavor-pill">杏桃</span><span class="flavor-pill">百合花</span><span class="flavor-pill">熱帶果汁</span><span class="flavor-pill">百香果</span><span class="flavor-pill">荔枝</span><span class="flavor-pill">覆盆子</span><span class="flavor-pill">玫瑰</span></div>
             </div>
           </div>
-          <div class="bean-price-wrap"><div class="bean-price">$480</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
@@ -450,12 +444,10 @@
 
       <div class="bean-card">
         <div class="bean-header">
+          <div class="bean-num">4</div>
           <div class="bean-body">
             <div class="bean-left">
-              <div class="bean-name-row">
-                <div class="bean-name"><span class="bean-num">4</span> 哥斯大黎加 塔拉佐 雲頂 火山寶藏莊園</div>
-                <div class="bean-price-mobile-row"><span class="bean-price">$520</span><span class="bean-price-unit">/ 220g</span></div>
-              </div>
+              <div class="bean-name">哥斯大黎加 塔拉佐 雲頂 火山寶藏莊園</div>
               <div class="bean-tags"><span class="tag">日曬</span><span class="tag">卡杜拉</span></div>
             </div>
             <div class="bean-right">
@@ -515,12 +507,10 @@
 
       <div class="bean-card">
         <div class="bean-header">
+          <div class="bean-num">5</div>
           <div class="bean-body">
             <div class="bean-left">
-              <div class="bean-name-row">
-                <div class="bean-name"><span class="bean-num">5</span> 哥倫比亞 娜麗諾 花境</div>
-                <div class="bean-price-mobile-row"><span class="bean-price">$750</span><span class="bean-price-unit">/ 220g</span></div>
-              </div>
+              <div class="bean-name">哥倫比亞 娜麗諾 花境</div>
               <div class="bean-tags"><span class="tag">水洗</span><span class="tag">藝伎</span></div>
             </div>
             <div class="bean-right">
@@ -528,7 +518,6 @@
               <div class="flavor-pills"><span class="flavor-pill">茉莉花</span><span class="flavor-pill">薰衣草</span><span class="flavor-pill">百香果</span><span class="flavor-pill">水蜜桃</span><span class="flavor-pill">檸檬草</span><span class="flavor-pill">綠茶</span><span class="flavor-pill">棉花糖</span></div>
             </div>
           </div>
-          <div class="bean-price-wrap"><div class="bean-price">$750</div><div class="bean-price-unit">/ 220g</div></div>
         </div>
         <div class="order-ctrl"><div class="ctrl-row">
           <div class="ctrl-inner-row">
