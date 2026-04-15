@@ -140,39 +140,41 @@
     .close-btn:hover { background: var(--gold); }
 
     @media (max-width: 760px) {
-      body { padding-bottom: 80px; }
-      .main-layout { flex-direction: column; padding: 1rem; }
-      .bean-list { padding-right: 0; }
+      body { padding-bottom: 80px; overflow-x: hidden; }
+      .main-layout { flex-direction: column; padding: 0.8rem; overflow-x: hidden; }
+      .bean-list { padding-right: 0; width: 100%; }
       .cart-wrap { display: none; }
-      .bean-card { padding: 0.8rem; overflow: hidden; width: 100%; box-sizing: border-box; }
+      .cart-fab { display: none; }
 
-      /* 號碼和內容同一行 */
-      .bean-header { flex-direction: row; align-items: flex-start; gap: 8px; }
-      .bean-num { font-size: 24px; flex-shrink: 0; }
+      /* 整個豆卡完全直排，嚴格限寬 */
+      .bean-card { padding: 1rem; width: 100%; box-sizing: border-box; overflow: hidden; }
+      .bean-header { display: block; width: 100%; }
+      .bean-num { font-size: 20px; display: inline-block; margin-bottom: 4px; }
+      .bean-body { display: block; width: 100%; }
+      .bean-left { display: block; width: 100%; }
+      .bean-name { font-size: 20px; display: block; margin-bottom: 6px; }
+      .bean-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0; }
+      .tag { font-size: 13px; padding: 4px 10px; }
+
+      /* 金額隱藏（右側那個） */
       .bean-header > .bean-price-wrap { display: none; }
-
-      /* bean-body 直排：品名在上，風味在下 */
-      .bean-body { flex-direction: column; gap: 0.6rem; width: 100%; min-width: 0; }
-      .bean-left { width: 100%; min-width: 0; }
-      .bean-name { font-size: 22px; }
-      .bean-tags { margin-top: 7px; flex-wrap: wrap; }
-      .tag { font-size: 14px; padding: 5px 11px; }
       .bean-price-wrap { display: none; }
 
       /* 風味在品名下方 */
-      .bean-right { border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.8rem; width: 100%; min-width: 0; }
-      .flavors-label { font-size: 15px; }
-      .flavor-pills { flex-wrap: wrap; gap: 5px; }
-      .flavor-pill { font-size: 15px; padding: 6px 13px; }
+      .bean-right { display: block; width: 100%; border-left: none; border-top: 1px solid var(--divider); padding-left: 0; padding-top: 0.8rem; margin-top: 0.8rem; box-sizing: border-box; }
+      .flavors-label { font-size: 14px; margin-bottom: 8px; }
+      .flavor-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+      .flavor-pill { font-size: 14px; padding: 5px 12px; }
 
       /* 選購控制 */
-      .ctrl-row { gap: 8px; }
-      .ctrl-inner-row { flex-wrap: nowrap; gap: 8px; overflow-x: visible; width: 100%; }
-      .ctrl-label { font-size: 16px; font-family: 'Noto Serif TC', serif; color: #5A4A35; }
+      .order-ctrl { border-top: 1px solid var(--divider); padding-top: 0.8rem; margin-top: 0.8rem; width: 100%; box-sizing: border-box; }
+      .ctrl-row { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+      .ctrl-inner-row { display: flex; flex-direction: row; align-items: center; gap: 8px; flex-wrap: nowrap; width: 100%; }
+      .ctrl-group { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+      .ctrl-label { font-size: 16px; font-family: 'Noto Serif TC', serif; color: #5A4A35; white-space: nowrap; }
       .ctrl-price { font-size: 13px; white-space: nowrap; }
-      .ctrl-group { flex-shrink: 0; }
       .qty-btn { width: 32px; height: 32px; font-size: 18px; flex-shrink: 0; }
-      .order-ctrl { overflow: visible; }
+      .qty-input { width: 52px; height: 32px; font-size: 20px; }
 
       /* 購物車 */
       .cart-title { font-size: 16px; }
@@ -188,7 +190,6 @@
       #mobileCartBar #mobileTotal { font-size: 24px; }
 
       .form-row { flex-direction: column; gap: 0; }
-      .cart-fab { display: none; }
     }
   </style>
 </head>
