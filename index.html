@@ -14,7 +14,7 @@
       --muted: #8A7A62; --divider: #D9C9A8; --card-bg: #FFFDF8;
       --tag-bg: #EEE6D6; --pill-bg: #EFF0EB;
     }
-    body { background: var(--cream); font-family: 'Noto Serif TC', serif; color: var(--warm-dark); }
+    body { background: var(--cream); font-family: 'Noto Serif TC', serif; color: var(--warm-dark); overflow-x: hidden; }
 
     .hero { text-align: center; padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--divider); max-width: 100%; }
     .logo-container svg { height: 64px; width: auto; }
@@ -22,8 +22,19 @@
     .hero-meta { font-size: 16px; color: #6B5A40; letter-spacing: 0.1em; margin-top: 0.5rem; }
     .roast-badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 13px; letter-spacing: 0.12em; padding: 5px 18px; margin-top: 1rem; font-family: 'Cormorant Garamond', serif; }
 
-    .main-layout { display: flex; gap: 0; max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 4rem; align-items: flex-start; justify-content: center; }
+    .main-layout { display: flex; gap: 0; max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 4rem; align-items: flex-start; justify-content: center; overflow-x: hidden; }
     .bean-list { flex: 1; min-width: 0; padding-right: 2rem; }
+
+    /* 浮動購物車按鈕 */
+    .cart-fab { display: none; }
+    .cart-fab-btn { width: 54px; height: 54px; border-radius: 50%; background: #2C2416; border: 1.5px solid #D4B07A; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .cart-fab-btn:hover { background: #3D3020; }
+    .cart-fab-badge { position: absolute; top: -3px; right: -3px; width: 20px; height: 20px; background: #E24B4A; border-radius: 50%; border: 2px solid #F7F3EC; display: none; align-items: center; justify-content: center; font-size: 11px; color: white; font-weight: 500; font-family: sans-serif; }
+
+    /* 下拉購物車面板 */
+    .cart-dropdown { display: none; position: absolute; top: 64px; right: 0; width: 300px; background: #F7F3EC; border: 1px solid #D9C9A8; border-radius: 4px; padding: 1.3rem; max-height: 80vh; overflow-y: auto; }
+    .cart-dropdown.open { display: block; }
+    .cart-drop-title { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 0.2em; color: #B8965A; margin-bottom: 12px; }
 
     .region-label { display: flex; align-items: center; gap: 16px; margin: 2rem 0 1.2rem; }
     .region-label span { font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: 0.35em; color: #96753A; white-space: nowrap; font-weight: 500; }
@@ -74,7 +85,7 @@
     .ctrl-price { font-size: 13px; color: #96753A; }
     .ctrl-divider { width: 1px; height: 22px; background: var(--divider); }
 
-    .cart-wrap { width: 230px; flex-shrink: 0; }
+    .cart-wrap { width: 260px; flex-shrink: 0; }
     .sticky-cart { position: sticky; top: 1.5rem; background: #F0EAD9; border: 1px solid var(--divider); border-radius: 2px; padding: 1.4rem; }
     .cart-title { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 0.2em; color: #96753A; margin-bottom: 1rem; font-weight: 500; }
     .cart-empty { font-size: 13px; color: var(--muted); text-align: center; padding: 0.8rem 0; line-height: 1.6; }
@@ -132,9 +143,13 @@
       body { padding-bottom: 80px; }
       .main-layout { flex-direction: column; padding: 1rem; }
       .bean-list { padding-right: 0; }
-      .cart-wrap { width: 100%; }
+      .cart-wrap { display: none; }
       .sticky-cart { position: static; }
-      .bean-card { padding: 1rem; }
+      .bean-card { padding: 0.8rem; overflow: hidden; width: 100%; box-sizing: border-box; }
+      .bean-body { overflow: hidden; width: 100%; box-sizing: border-box; }
+      .bean-right { overflow: hidden; max-width: 100%; word-break: break-word; }
+      .flavor-pills { overflow: hidden; }
+      .flavor-pill { overflow: hidden; word-break: break-word; }
 
       .bean-header { flex-direction: row; align-items: flex-start; gap: 8px; }
       .bean-num { font-size: 24px; }
@@ -146,9 +161,9 @@
       .bean-price-wrap { margin-top: 8px; justify-content: flex-start; }
       .bean-price { font-size: 24px; }
       .bean-price-unit { font-size: 15px; }
-      .bean-right { border-left: 1px solid var(--divider); border-top: none; padding-left: 1.2rem; padding-top: 0; flex: 1; min-width: 0; }
+      .bean-right { border-left: 1px solid var(--divider); border-top: none; padding-left: 0.6rem; padding-top: 0; flex: 1; min-width: 0; overflow: hidden; width: 0; }
       .flavors-label { font-size: 15px; }
-      .flavor-pills { flex-wrap: wrap; gap: 6px; }
+      .flavor-pills { flex-wrap: wrap; gap: 5px; overflow: hidden; }
       .flavor-pill { font-size: 15px; padding: 6px 13px; }
       .bean-header > .bean-price-wrap { display: none; }
       .bean-left > .bean-price-wrap { display: flex !important; }
@@ -173,6 +188,7 @@
       #mobileCartBar #mobileTotal { font-size: 24px; }
 
       .form-row { flex-direction: column; gap: 0; }
+      .cart-fab { display: none; }
     }
   </style>
 </head>
@@ -430,12 +446,68 @@
   </div>
 
   <!-- 手機底部浮動結帳列 -->
+  <!-- 購物車浮動面板 -->
+  <div id="cartPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(44,36,22,0.5);" onclick="if(event.target===this)closeCartPanel()">
+    <div style="background:#F7F3EC;border-radius:12px 12px 0 0;padding:1.5rem 1.5rem 2rem;max-height:70vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:0.2em;color:#B8965A;">購 物 車</span>
+        <button onclick="closeCartPanel()" style="background:none;border:none;font-size:22px;color:#8A7A62;cursor:pointer;padding:0;">×</button>
+      </div>
+      <div id="panelCartItems"></div>
+      <div id="panelCartSummary" style="display:none;">
+        <hr style="border:none;border-top:1px solid #D9C9A8;margin:10px 0;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#8A7A62;margin-bottom:4px;"><span>商品小計</span><span id="panelSubtotal">$0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#8A7A62;margin-bottom:12px;"><span>運費</span><span id="panelShip">—</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <span style="font-size:15px;color:#2C2416;">合計</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#2C2416;">$<span id="panelTotal">0</span></span>
+        </div>
+        <button onclick="closeCartPanel();openCheckout();" style="width:100%;padding:14px;background:#2C2416;color:#F7F3EC;border:none;border-radius:2px;font-family:'Noto Serif TC',serif;font-size:14px;letter-spacing:0.12em;cursor:pointer;">前往結帳</button>
+      </div>
+      <div id="panelEmpty" style="text-align:center;padding:1.5rem 0;font-size:14px;color:#8A7A62;">尚未選購任何商品</div>
+    </div>
+  </div>
+
   <div id="mobileCartBar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2C2416;padding:12px 1.5rem;z-index:100;align-items:center;justify-content:space-between;gap:1rem;">
-    <div style="color:#F7F3EC;font-family:'Noto Serif TC',serif;">
+    <div style="position:relative;display:inline-block;">
+      <button onclick="toggleCartPanel()" style="background:#3D3020;border:1.5px solid #D4B07A;border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4B07A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </button>
+      <span id="cartDot" style="display:none;position:absolute;top:0;right:0;width:10px;height:10px;background:#E24B4A;border-radius:50%;border:2px solid #2C2416;"></span>
+    </div>
+    <div style="color:#F7F3EC;font-family:'Noto Serif TC',serif;flex:1;padding-left:0.8rem;">
       <div style="font-size:11px;color:#D4B07A;margin-bottom:2px;">購物車</div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:22px;">$<span id="mobileTotal">0</span></div>
     </div>
     <button onclick="openCheckout()" style="background:#B8965A;color:#FFFDF8;border:none;border-radius:2px;padding:10px 24px;font-family:'Noto Serif TC',serif;font-size:13px;letter-spacing:0.1em;cursor:pointer;white-space:nowrap;">前往結帳</button>
+  </div>
+
+  <!-- 浮動購物車按鈕 (桌面版) -->
+  <div class="cart-fab" id="desktopCartFab">
+    <button class="cart-fab-btn" onclick="toggleDesktopCart()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4B07A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <div class="cart-fab-badge" id="desktopCartBadge"></div>
+    </button>
+    <div class="cart-dropdown" id="desktopCartDropdown">
+      <div class="cart-drop-title">購 物 車</div>
+      <div id="desktopCartItems"></div>
+      <div id="desktopCartSummary" style="display:none;">
+        <hr style="border:none;border-top:1px solid #D9C9A8;margin:10px 0;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#8A7A62;margin-bottom:4px;"><span>商品小計</span><span id="dcSubtotal">$0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#8A7A62;margin-bottom:10px;"><span>運費</span><span id="dcShip">—</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <span style="font-size:14px;color:#2C2416;">合計</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#2C2416;">$<span id="dcTotal">0</span></span>
+        </div>
+        <button onclick="toggleDesktopCart();openCheckout();" style="width:100%;padding:12px;background:#2C2416;color:#F7F3EC;border:none;border-radius:2px;font-family:'Noto Serif TC',serif;font-size:13px;letter-spacing:0.1em;cursor:pointer;">前往結帳</button>
+        <div style="font-size:11px;color:#B8965A;text-align:center;margin-top:6px;" id="dcShipNote">滿 $800 免運費</div>
+      </div>
+      <div id="desktopCartEmpty" style="font-size:13px;color:#8A7A62;text-align:center;padding:1rem 0;">尚未選購任何商品</div>
+    </div>
   </div>
 
   <script>
@@ -564,6 +636,59 @@
       document.getElementById('totalHidden').value=total;
       document.getElementById('payAmount').textContent=total.toLocaleString();
       document.getElementById('orderSummaryHidden').value=lines.map(l=>l.name+' x'+l.qty+'：$'+l.price).join('\n')+'\n商品小計：$'+subtotal+'\n運費：$'+shipping+'\n合計：$'+total;
+      // Update desktop floating cart
+      const dcItems = document.getElementById('desktopCartItems');
+      const dcSummary = document.getElementById('desktopCartSummary');
+      const dcEmpty = document.getElementById('desktopCartEmpty');
+      const dcBadge = document.getElementById('desktopCartBadge');
+      if (dcBadge) {
+        if (lines.length > 0) { dcBadge.style.display = 'flex'; dcBadge.textContent = lines.length; }
+        else { dcBadge.style.display = 'none'; }
+      }
+      if (dcItems && dcSummary && dcEmpty) {
+        if (lines.length === 0) {
+          dcEmpty.style.display = 'block'; dcSummary.style.display = 'none'; dcItems.innerHTML = '';
+        } else {
+          dcEmpty.style.display = 'none'; dcSummary.style.display = 'block';
+          dcItems.innerHTML = lines.map(l =>
+            `<div style="display:flex;justify-content:space-between;align-items:flex-start;font-size:12px;margin-bottom:7px;gap:8px;">
+              <span style="color:#8A7A62;flex:1;line-height:1.4;">${l.name} x${l.qty}</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:14px;color:#2C2416;white-space:nowrap;">$${l.price.toLocaleString()}</span>
+            </div>`
+          ).join('');
+          document.getElementById('dcSubtotal').textContent = '$' + subtotal.toLocaleString();
+          document.getElementById('dcShip').textContent = shipping === 0 ? (subtotal >= 800 ? '免運費' : '—') : '+$' + shipping;
+          document.getElementById('dcTotal').textContent = total.toLocaleString();
+          document.getElementById('dcShipNote').textContent = subtotal >= 800 ? '✓ 已達免運門檻' : '滿 $800 免運費';
+        }
+      }
+
+      // Update cart panel
+      const panelItems = document.getElementById('panelCartItems');
+      const panelSummary = document.getElementById('panelCartSummary');
+      const panelEmpty = document.getElementById('panelEmpty');
+      const cartDot = document.getElementById('cartDot');
+      if (cartDot) cartDot.style.display = lines.length > 0 ? 'block' : 'none';
+      if (panelItems && panelSummary && panelEmpty) {
+        if (lines.length === 0) {
+          panelEmpty.style.display = 'block';
+          panelSummary.style.display = 'none';
+          panelItems.innerHTML = '';
+        } else {
+          panelEmpty.style.display = 'none';
+          panelSummary.style.display = 'block';
+          panelItems.innerHTML = lines.map(l =>
+            `<div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:8px;gap:8px;">
+              <span style="color:#8A7A62;flex:1;line-height:1.4;">${l.name} x${l.qty}</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#2C2416;white-space:nowrap;">$${l.price.toLocaleString()}</span>
+            </div>`
+          ).join('');
+          document.getElementById('panelSubtotal').textContent = '$' + subtotal.toLocaleString();
+          document.getElementById('panelShip').textContent = shipping === 0 ? (subtotal >= 800 ? '免運費' : '—') : '+$' + shipping;
+          document.getElementById('panelTotal').textContent = total.toLocaleString();
+        }
+      }
+
       const ms=document.getElementById('modalOrderSummary');
       if(ms) ms.innerHTML=lines.map(l=>`<div class="summary-item"><span>${l.name} x${l.qty}</span><span>$${l.price.toLocaleString()}</span></div>`).join('')+`<div class="summary-total"><span class="summary-total-label">合計</span><span class="summary-total-val">$${total.toLocaleString()}</span></div>`;
 
@@ -592,6 +717,33 @@
       renderCart();
       document.getElementById('checkoutModal').classList.add('show');
     }
+    function toggleDesktopCart() {
+      const dd = document.getElementById('desktopCartDropdown');
+      dd.classList.toggle('open');
+    }
+
+    // Close desktop cart when clicking outside
+    document.addEventListener('click', function(e) {
+      const fab = document.getElementById('desktopCartFab');
+      if (fab && !fab.contains(e.target)) {
+        const dd = document.getElementById('desktopCartDropdown');
+        if (dd) dd.classList.remove('open');
+      }
+    });
+
+    function toggleCartPanel() {
+      const panel = document.getElementById('cartPanel');
+      if (panel.style.display === 'none' || panel.style.display === '') {
+        panel.style.display = 'block';
+      } else {
+        panel.style.display = 'none';
+      }
+    }
+
+    function closeCartPanel() {
+      document.getElementById('cartPanel').style.display = 'none';
+    }
+
     function closeCheckout() { document.getElementById('checkoutModal').classList.remove('show'); }
     function closePayment() {
       document.getElementById('paymentModal').classList.remove('show');
